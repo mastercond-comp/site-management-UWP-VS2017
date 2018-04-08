@@ -1,0 +1,262 @@
+﻿<Page
+    x:Class="Управление.сайтом.KatalogPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="MenuBar" HorizontalAlignment="Center" IsSticky="True" CompositeMode="Inherit" Background="White">
+            <AppBarButton Icon="OpenLocal" Label="Загрузить *.tcatalog" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="LoadFileTCatalog_Click"/>
+            <AppBarButton Icon="Upload" Label="Сохранить *.tcatalog и выгрузить по FTP" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Save" Label="Сохранить *.tcatalog"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileKatalogTovarov_Click"/>
+            <AppBarButton Icon="SaveLocal" Label="Сохранить *.php"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileKatalogTovarovTPL_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TextBlockH1" Text="СТРАНИЦА &quot;КАТАЛОГ ТОВАРОВ&quot;"   FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+
+            <Image x:Name="OpisanieImageIMG" Source="ms-appx:///Assets/katalogpagescreenshot.png" Width="630" RelativePanel.Below="TextBlockH1" Margin="20,30,0,0"/>
+            <TextBlock x:Name="ImageOpisanie" Text="(пример страницы &quot;КАТАЛОГ ТОВАРОВ&quot;)" Margin="20,5,0,0" RelativePanel.Below="OpisanieImageIMG" FontSize="12" />
+            <Rectangle x:Name="RazdelitelImage1" RelativePanel.Below="ImageOpisanie" Fill="#FFF4F4F5" Height="0.7" Width="1000" Margin="20,20,0,0"/>
+
+
+
+
+            <Button Visibility="Collapsed" x:Name="LoadFileTCatalog" Content="Загрузить файл данных страницы &quot;КАТАЛОГ ТОВАРОВ&quot;(.tcatalog)" RelativePanel.Below="RazdelitelImage1" Margin="20,35,0,0" Background="#992B65E2" Click="LoadFileTCatalog_Click"/>
+
+            <TextBlock x:Name="TextBlockSettings01" RelativePanel.Below="LoadFileTCatalog" Margin="20,20,0,0" Text="Заголовок страницы в браузере:"   />
+            <TextBlock x:Name="TextBlockSettings02" RelativePanel.Below="TextBlockSettings01" Margin="20,3,0,0" Text="(например, Монтаж теплых полов в компании TheBestCompany)"   FontSize="11" />
+            <TextBox x:Name="TextBoxZagolovokPage" RelativePanel.Below="TextBlockSettings02" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings001" RelativePanel.Below="TextBoxZagolovokPage" Margin="20,20,0,0" Text="Ключевые слова страницы для поисковиков (meta name=&quot;keywords&quot;):" TextWrapping="WrapWholeWords"  />
+            <TextBlock x:Name="TextBlockSettings002" RelativePanel.Below="TextBlockSettings001" Margin="20,3,0,0" Text="(например, теплые полы, терморегулятор [указываются через запятую])"   FontSize="11" />
+            <TextBox x:Name="TextBoxKeywords" RelativePanel.Below="TextBlockSettings002" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings0001" RelativePanel.Below="TextBoxKeywords" Margin="20,20,0,0" Text="Описание страницы для поисковиков (meta name=&quot;description&quot;):"  TextWrapping="WrapWholeWords" />
+            <TextBlock x:Name="TextBlockSettings0002" RelativePanel.Below="TextBlockSettings0001" Margin="20,3,0,0" Text="(например, Каталог лучших теплых полов от компании TheBestCompany)"   FontSize="11" />
+            <TextBox x:Name="TextBoxMetaDescription" RelativePanel.Below="TextBlockSettings0002" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockSettings000001" RelativePanel.Below="TextBoxMetaDescription" Margin="20,20,0,0" Text="Шрифт текста на странице:"   />
+            <TextBlock x:Name="TextBlockSettings000002" RelativePanel.Below="TextBlockSettings000001" Margin="20,3,0,0" Text="(например, Tahoma)"   FontSize="11" />
+            <TextBox x:Name="TextBoxFont" RelativePanel.Below="TextBlockSettings000002" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings1" RelativePanel.Below="TextBoxFont" Margin="20,20,0,0" Text="Цвет текста заголовка страницы:"   />
+            <TextBlock x:Name="TextBlockSettings2" RelativePanel.Below="TextBlockSettings1" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxZagolovokColor" RelativePanel.Below="TextBlockSettings2" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings3" RelativePanel.Below="TextBoxZagolovokColor" Margin="20,20,0,0" Text="Цвет текста категорий товаров:"   />
+            <TextBlock x:Name="TextBlockSettings4" RelativePanel.Below="TextBlockSettings3" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxKategoriiTextColor" RelativePanel.Below="TextBlockSettings4" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings5" RelativePanel.Below="TextBoxKategoriiTextColor" Margin="20,20,0,0" Text="Цвет текста на кнопке &quot;Перейти в каталог&quot;:"   />
+            <TextBlock x:Name="TextBlockSettings6" RelativePanel.Below="TextBlockSettings5" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxButtonTextColor" RelativePanel.Below="TextBlockSettings6" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings7" RelativePanel.Below="TextBoxButtonTextColor" Margin="20,20,0,0" Text="Цвет фона страницы:"   />
+            <TextBlock x:Name="TextBlockSettings8" RelativePanel.Below="TextBlockSettings7" Margin="20,3,0,0" Text="(например, white, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxBackgroundColor" RelativePanel.Below="TextBlockSettings8" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings9" RelativePanel.Below="TextBoxBackgroundColor" Margin="20,20,0,0" Text="Цвет текста навигационных ссылок:"   />
+            <TextBlock x:Name="TextBlockSettings10" RelativePanel.Below="TextBlockSettings9" Margin="20,3,0,0" Text="(например, blue, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxNavigationTextColor" RelativePanel.Below="TextBlockSettings10" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings99" RelativePanel.Below="TextBoxNavigationTextColor" Margin="20,20,0,0" Text="Ссылка на файл со своими CSS-стилями:"   />
+            <TextBlock x:Name="TextBlockSettings910" RelativePanel.Below="TextBlockSettings99" Margin="20,3,0,0" Text="(например, /css/my.css)"   FontSize="11" />
+            <TextBox x:Name="TextBoxCUSTOMCSS" RelativePanel.Below="TextBlockSettings910" Margin="20,5,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings111" RelativePanel.Below="TextBoxCUSTOMCSS" Margin="20,20,0,0" Text="СВОИ СТИЛИ между тегами &lt;style&gt;&lt;/style&gt;:"   />
+            <TextBlock x:Name="TextBlockSettings112" RelativePanel.Below="TextBlockSettings111" Margin="20,3,0,0" Text="(например, p {font-size:15px;})"   FontSize="11" />
+            <TextBlock x:Name="TextBlockSettings010" RelativePanel.Below="TextBlockSettings112" Margin="20,5,0,0" Text="* Для оформления отображения товаров задайте здесь стили div.catalog-image {}, div.catalog-text {}"   FontSize="11" Width="300" TextWrapping="WrapWholeWords" />
+            
+            
+
+            <TextBox x:Name="TextBoxSTYLE" RelativePanel.Below="TextBlockSettings010" Margin="20,5,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings007" RelativePanel.Below="TextBoxSTYLE" Margin="20,20,0,0" Text="Стили для кнопки перехода в товарный раздел (style=&quot; &quot;):"   TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSettings008" RelativePanel.Below="TextBlockSettings007" Margin="20,3,0,0" Text="(например, background:white;)"   FontSize="11" />
+            <TextBox x:Name="TextBoxSTYLEButton" RelativePanel.Below="TextBlockSettings008" Margin="20,3,0,0" Width="300" />
+
+            <Rectangle x:Name="Razdelitel" RelativePanel.Below="TextBoxSTYLEButton" Fill="#FFF4F4F5" Height="0.5" Width="1000" Margin="20,25,0,0"/>
+
+            <TextBlock x:Name="TextBlockSettings11" RelativePanel.Below="Razdelitel" Margin="20,20,0,0" Text="Название каталога:"   />
+            <TextBlock x:Name="TextBlockSettings12" RelativePanel.Below="TextBlockSettings11" Margin="20,3,0,0" Text="(например, каталог запчастей)"   FontSize="11" />
+            <TextBox x:Name="TextBoxNazvanijeKataloga" RelativePanel.Below="TextBlockSettings12" Margin="20,3,0,0" Width="300" />
+
+            
+            
+            <TextBlock x:Name="TextBlockSettings1Razdel" RelativePanel.Below="TextBoxNazvanijeKataloga" Margin="30,40,0,0" Text="Название раздела каталога:"   Width="300" TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSettings2Razdel" RelativePanel.Below="TextBlockSettings1Razdel" Margin="30,3,0,0" Text="(например, Кондиционеры)"   FontSize="11" Width="300" TextWrapping="WrapWholeWords"/>
+
+            <TextBlock x:Name="TextBlockSettings3Razdel" RelativePanel.Below="TextBoxNazvanijeKataloga" RelativePanel.RightOf="TextBlockSettings1Razdel" Margin="30,40,0,0" Text="Ссылка (.php) для перехода в раздел каталога:"   Width="300" TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSettings4Razdel" RelativePanel.Below="TextBlockSettings3Razdel" RelativePanel.RightOf="TextBlockSettings1Razdel" Margin="30,3,0,0" Text="(например, /aircondkatalog.php)"   FontSize="11" Width="300" TextWrapping="WrapWholeWords"/>
+
+            <TextBlock x:Name="TextBlockSettings5Razdel" RelativePanel.Below="TextBoxNazvanijeKataloga" RelativePanel.RightOf="TextBlockSettings3Razdel" Margin="30,40,0,0" Text="Путь к изображению раздела каталога (высота на странице каталога 180px):"   Width="300" TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSettings6Razdel" RelativePanel.Below="TextBlockSettings5Razdel" RelativePanel.RightOf="TextBlockSettings3Razdel" Margin="30,3,0,0" Text="(например, /images/123.jpg)"   FontSize="11" Width="300" TextWrapping="WrapWholeWords"/>
+
+            
+            <TextBlock x:Name="TextBlockRow1" Text="Ряд №1:" RelativePanel.Below="TextBlockSettings2Razdel" Margin="20,30,0,0" />
+
+            <StackPanel x:Name="StackPanelRow1R1" Orientation="Horizontal" RelativePanel.Below="TextBlockRow1" Margin="0,40,0,0">
+            <TextBox x:Name="TextBoxNazvanijeRazdel1" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            <TextBox x:Name="TextBoxLinkRazdel1" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            <TextBox x:Name="TextBoxIMGLinkRazdel1" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow1R2" Orientation="Horizontal" RelativePanel.Below="StackPanelRow1R1" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel2" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel2" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel2" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow1R3" Orientation="Horizontal" RelativePanel.Below="StackPanelRow1R2" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel3" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel3" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel3" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow1R4" Orientation="Horizontal" RelativePanel.Below="StackPanelRow1R3" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel4" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel4" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel4" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+
+            <TextBlock x:Name="TextBlockRow2" Text="Ряд №2:" RelativePanel.Below="StackPanelRow1R4" Margin="20,30,0,0" />
+
+            <StackPanel x:Name="StackPanelRow2R1" Orientation="Horizontal" RelativePanel.Below="TextBlockRow2" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel5" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel5" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel5" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow2R2" Orientation="Horizontal" RelativePanel.Below="StackPanelRow2R1" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel6" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel6" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel6" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow2R3" Orientation="Horizontal" RelativePanel.Below="StackPanelRow2R2" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel7" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel7" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel7" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow2R4" Orientation="Horizontal" RelativePanel.Below="StackPanelRow2R3" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel8" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel8" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel8" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+
+            <TextBlock x:Name="TextBlockRow3" Text="Ряд №3:" RelativePanel.Below="StackPanelRow2R4" Margin="20,30,0,0" />
+
+            <StackPanel x:Name="StackPanelRow3R1" Orientation="Horizontal" RelativePanel.Below="TextBlockRow3" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel9" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel9" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel9" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow3R2" Orientation="Horizontal" RelativePanel.Below="StackPanelRow3R1" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel10" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel10" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel10" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow3R3" Orientation="Horizontal" RelativePanel.Below="StackPanelRow3R2" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel11" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel11" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel11" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelRow3R4" Orientation="Horizontal" RelativePanel.Below="StackPanelRow3R3" Margin="0,40,0,0">
+                <TextBox x:Name="TextBoxNazvanijeRazdel12" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxLinkRazdel12" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+                <TextBox x:Name="TextBoxIMGLinkRazdel12" Width="300" Margin="30,0,0,0" MaxHeight="50" />
+            </StackPanel>
+
+
+
+            <Button Visibility="Collapsed" x:Name="SaveFileKatalogTovarov" Content="сохранить файл данных страницы &quot;КАТАЛОГ ТОВАРОВ&quot;(.tcatalog)" RelativePanel.Below="StackPanelRow3R4" Margin="20,40,0,0" Background="#992B65E2" Click="SaveFileKatalogTovarov_Click"/>
+            <Button Visibility="Collapsed" x:Name="SaveFileKatalogTovarovTPL" Content="Экспорт страницы &quot;КАТАЛОГ ТОВАРОВ&quot;(.php)" RelativePanel.Below="SaveFileKatalogTovarov" Margin="20,20,0,0" Background="LawnGreen" Click="SaveFileKatalogTovarovTPL_Click"/>
+
+
+            <TextBlock x:Name="TextBlockFtp" Text="Данные для выгрузки файла на FTP"   FontSize="14" FontWeight="Bold" RelativePanel.Below="SaveFileKatalogTovarovTPL" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer" Text="FTP адрес файла на сервере:"   RelativePanel.Below="TextBlockFtp" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer1" Text="(например, ftp://www.123.com/public_html/katalog-polov.php)"   FontSize="11" RelativePanel.Below="TextBlockFtpServer" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPServer" Width="300" RelativePanel.Below="TextBlockFtpServer1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpUser" Text="Имя пользователя:"   RelativePanel.Below="TextBoxFTPServer" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpUser1" Text="(например, Anonumous)"   FontSize="11" RelativePanel.Below="TextBlockFtpUser" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPUser" Width="300" RelativePanel.Below="TextBlockFtpUser1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpPass" Text="Пароль:"   RelativePanel.Below="TextBoxFTPUser" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpPass1" Text="(введите пароль от FTP)"   FontSize="11" RelativePanel.Below="TextBlockFtpPass" Margin="20,3,0,0" />
+            <PasswordBox x:Name="TextBoxFTPPass" Width="300" RelativePanel.Below="TextBlockFtpPass1" Margin="20,3,0,0"/>
+            <TextBlock x:Name="WarningFTP" Text="Перед отправкой файла по FTP обязательно выполните сохранение PHP-файла на вашем устройстве, иначе на FTP будет загружен пустой файл." FontWeight="Bold" Margin="20,20,0,0" RelativePanel.Below="TextBoxFTPPass" Foreground="#FFF31515" Visibility="Collapsed"/>
+
+
+            <Button Visibility="Collapsed" x:Name="FTPFileKatalogTovarovTPL" Content="Выгрузить на FTP готовый файл страницы &quot;КАТАЛОГ ТОВАРОВ&quot;(.php)" RelativePanel.Below="WarningFTP" Margin="20,20,0,0" Background="LightBlue" Click="FTPFileKatalogTovarovTPL_Click"/>
+
+
+            <TextBlock x:Name="empty_footer" RelativePanel.Below="FTPFileKatalogTovarovTPL" Margin="20,20,0,0"/>
+            <ProgressRing x:Name="Progress" RelativePanel.Below="empty_footer" Margin="20,5,0,0" Foreground="Purple" Background="Transparent"/>
+            <TextBlock x:Name="StatusFile" RelativePanel.Below="Progress" Margin="20,5,0,0" Visibility="Collapsed"/>
+            <TextBlock x:Name="empty_footer2" RelativePanel.Below="StatusFile" Margin="20,20,0,0"/>
+
+            <TextBox x:Name="FileTextBox" Visibility="Collapsed" RelativePanel.Below="empty_footer2"/>
+
+
+
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="400" />
+                        <Setter Target="MenuBar.IsOpen" Value="True" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="630" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="390" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="480" />
+                        <Setter Target="TextBlockSettings001.Width" Value="480"/>
+                        <Setter Target="TextBlockSettings0001.Width" Value="480"/>
+                        <Setter Target="TextBlockSettings007.Width" Value="480"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="300" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="400" />
+                        <Setter Target="TextBlockSettings001.Width" Value="400"/>
+                        <Setter Target="TextBlockSettings0001.Width" Value="400"/>
+                        <Setter Target="TextBlockSettings007.Width" Value="400"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+    </ScrollViewer>
+</Page>

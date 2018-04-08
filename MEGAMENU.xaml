@@ -1,0 +1,296 @@
+﻿<Page
+    x:Class="Управление.сайтом.MEGAMENU"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="MenuBar" HorizontalAlignment="Center" IsSticky="True" CompositeMode="Inherit" Background="White">
+            <AppBarButton Icon="OpenLocal" Label="Загрузить *.mainmega" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="LoadFileMain_Click"/>
+            <AppBarButton Icon="Upload" Label="Сохранить *.mainmega и выгрузить по FTP файл navigation.tpl" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Save" Label="Сохранить *.mainmega" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileMain_Click"/>
+            <AppBarButton Icon="SaveLocal" Label="Сохранить navigation.tpl" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileMainTPL_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TextBlockH1" Text="НАВИГАЦИОННОЕ МЕГА-МЕНЮ"   FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+
+            <Image x:Name="OpisanieImageIMG" Source="ms-appx:///Assets/megamenuscreenshot.png" Width="630" RelativePanel.Below="TextBlockH1" Margin="20,30,0,0"/>
+            <TextBlock x:Name="ImageOpisanie" Text="(пример модуля &quot;МЕГАМЕНЮ САЙТА&quot;)" Margin="20,5,0,0" RelativePanel.Below="OpisanieImageIMG" FontSize="12" />
+
+            <TextBlock x:Name="Documentation" Text="МЕГА-меню выполнено на базе YAMM3:" Margin="20,20,0,0" RelativePanel.Below="ImageOpisanie" />
+            <HyperlinkButton x:Name="DocumentationLink" Content="Документация YAMM3" Margin="20,10,0,0" RelativePanel.Below="Documentation" NavigateUri="https://geedmo.github.io/yamm3/"/>
+
+            <TextBlock x:Name="Documentation2" Text="Для замены стандартного меню на мегаменю добавьте CSS-стили YAMM3 в разделе &quot;СВОИ CSS-стили&quot;, YAMM3-скрипт в разделе &quot;СКРИПТЫ В ФУТЕРЕ&quot;, либо добавьте соответствующий код в разделе &quot;Модуль HEADER.TPL&quot;." Margin="20,20,0,0" RelativePanel.Below="DocumentationLink" Width="600" TextWrapping="WrapWholeWords"/>
+
+
+            <Rectangle x:Name="RazdelitelImage1" RelativePanel.Below="Documentation2" Fill="#FFF4F4F5" Height="0.7" Width="1000" Margin="20,20,0,0"/>
+
+
+            <Button Visibility="Collapsed" x:Name="LoadFileMain" Content="Загрузить файл данных шапки и меню (.main)" RelativePanel.Below="RazdelitelImage1" Margin="20,35,0,0" Background="#992B65E2" Click="LoadFileMain_Click"/>
+
+            <TextBlock x:Name="TextBlockName" Text="Название компании:"   RelativePanel.Below="LoadFileMain" Margin="20,15,0,0" />
+            <TextBox x:Name="TextBoxName"  RelativePanel.Below="TextBlockName" Margin="20,5,0,0" Width="300"/>
+
+
+            <TextBlock x:Name="TextBlockSlogan" Text="Слоган компании:"   RelativePanel.Below="TextBoxName" Margin="20,15,0,0" />
+            <TextBlock x:Name="TextBlockSlogan2" Text="(будет отображен под названием компании в шапке сайта)"   FontSize="11" RelativePanel.Below="TextBlockSlogan" Margin="20,2,0,0" />
+            <TextBox x:Name="TextBoxSlogan"  RelativePanel.Below="TextBlockSlogan2" Margin="20,5,0,0" Width="300"/>
+
+            <TextBlock x:Name="TextBlockLogo" Text="Путь к изображению логотипа 70x65px (или пропорционального 70х65px):"   RelativePanel.Below="TextBoxSlogan" Margin="20,15,0,0" TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockLogo2" Text="(например, /images/logo.png)"   FontSize="11" RelativePanel.Below="TextBlockLogo" Margin="20,2,0,0" />
+            <TextBox x:Name="TextBoxLogo"  RelativePanel.Below="TextBlockLogo2" Margin="20,5,0,0" Width="300"/>
+
+            <TextBlock x:Name="TextBlockTel" Text="Телефон в шапке справа:"   RelativePanel.Below="TextBoxLogo" Margin="20,15,0,0" />
+            <TextBlock x:Name="TextBlockTel2" Text="(например, +7 495 555 55 55)"   FontSize="11" RelativePanel.Below="TextBlockTel" Margin="20,2,0,0" />
+            <TextBox x:Name="TextBoxTel"  RelativePanel.Below="TextBlockTel2" Margin="20,5,0,0" Width="300"/>
+
+            <TextBlock x:Name="TextBlockGorod" Text="Город расположения компании:"   RelativePanel.Below="TextBoxTel" Margin="20,15,0,0" />
+            <TextBlock x:Name="TextBlockGorod2" Text="(например, Новосибирск - будет отображен под телефоном)"   FontSize="11" RelativePanel.Below="TextBlockGorod" Margin="20,2,0,0" />
+            <TextBox x:Name="TextBoxGorod"  RelativePanel.Below="TextBlockGorod2" Margin="20,5,0,0" Width="300"/>
+
+            <TextBlock x:Name="TextBlockShrift" Text="Шрифт текста:"   RelativePanel.Below="TextBoxGorod" Margin="20,15,0,0" />
+            <TextBlock x:Name="TextBlockShrift2" Text="(например, tahoma, sans-serif или другие)"   FontSize="11" RelativePanel.Below="TextBlockShrift" Margin="20,2,0,0" />
+            <TextBox x:Name="TextBoxShrift"  RelativePanel.Below="TextBlockShrift2" Margin="20,5,0,0" Width="300"/>
+
+            <TextBlock x:Name="TextBlockShriftTel" Text="Шрифт телефонного номера:"   RelativePanel.Below="TextBoxShrift" Margin="20,15,0,0" />
+            <TextBlock x:Name="TextBlockShriftTel2" Text="(например, tahoma, sans-serif или другие)"   FontSize="11" RelativePanel.Below="TextBlockShriftTel" Margin="20,2,0,0" />
+            <TextBox x:Name="TextBoxShriftTel"  RelativePanel.Below="TextBlockShriftTel2" Margin="20,5,0,0" Width="300"/>
+
+            <TextBlock x:Name="TextBlockMenu0" Text="МЕГАМЕНЮ САЙТА"   RelativePanel.Below="TextBoxShriftTel" Margin="20,20,0,0" FontSize="14" FontWeight="Bold" />
+            <TextBlock x:Name="TextBlockBackgroundColor" RelativePanel.Below="TextBlockMenu0" Margin="20,20,0,0" Text="Цвет фона панели меню:" />
+            <TextBlock x:Name="TextBlockBackgroundColor0" RelativePanel.Below="TextBlockBackgroundColor" Margin="20,3,0,0" Text="(black, white, green или любой другой цвет)" FontSize="11"/>
+            <TextBox x:Name="TextBoxBackgroundColor" Margin="20,5,0,0" Width="300" RelativePanel.Below="TextBlockBackgroundColor0" />
+
+            <TextBlock x:Name="TextBlockSTYLENavigation" RelativePanel.Below="TextBoxBackgroundColor" Margin="20,20,0,0" Text="Стиль навигационного меню (navbar style=&quot;&quot;):"  TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSTYLENavigation1" RelativePanel.Below="TextBlockSTYLENavigation" Margin="20,3,0,0" Text="(например, border: 1px solid black;)" FontSize="11"/>
+            <TextBox x:Name="TextBoxSTYLENavigation" Margin="20,5,0,0" Width="300" RelativePanel.Below="TextBlockSTYLENavigation1" />
+
+            <TextBlock x:Name="TextBlockSTYLENavigation0" RelativePanel.Below="TextBoxSTYLENavigation" Margin="20,20,0,0" Text="Стиль выдвигающейся панели навигационного меню (dropdown-menu style=&quot;&quot;):" TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSTYLENavigation01" RelativePanel.Below="TextBlockSTYLENavigation0" Margin="20,3,0,0" Text="(например, border: 1px solid black;)" FontSize="11"/>
+            <TextBox x:Name="TextBoxSTYLENavigationBar" Margin="20,5,0,0" Width="300" RelativePanel.Below="TextBlockSTYLENavigation01" />
+
+
+
+            <TextBlock x:Name="TextBlockMenuRazdel1" Text="Раздел 1 меню:"   RelativePanel.Below="TextBoxSTYLENavigationBar" Margin="20,30,0,0" FontWeight="Bold" />
+                        
+            <StackPanel x:Name="StackPanelMenuRazdel1" Orientation="Horizontal" RelativePanel.Below="TextBlockMenuRazdel1"  Margin="20,5,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="TextBlockMenuRazdel11" Text="(будет отображен в шапке)"   FontSize="11"/>
+                    <TextBox x:Name="TextBoxMenuRazdel1Name"  Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelMenuRazdel1Link" Orientation="Vertical" Margin="15,0,0,0">
+                    <TextBlock x:Name="TextBlockMenuRazdel12" Text="(ccылка, оставьте пустым для выпадающего меню)"   FontSize="11" />
+                    <TextBox x:Name="TextBoxMenuRazdel1Link" Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockMenuRazdel1Punkt1" Text="HTML-код раздела 1 меню:"   RelativePanel.Below="StackPanelMenuRazdel1" Margin="40,15,0,0" />
+            <TextBlock x:Name="TextBlockMenuRazdel11Punkt1" Text="(содержимое слоя &lt;div class=&quot;yamm-content&quot;&gt;&lt;/div&gt;)"   FontSize="11" RelativePanel.Below="TextBlockMenuRazdel1Punkt1" Margin="40,2,0,0" />
+            <TextBox x:Name="TextBoxMenuRazdel1HTML"  RelativePanel.Below="TextBlockMenuRazdel11Punkt1" Margin="30,5,0,0" Width="600" Height="600"/>
+
+
+
+            <TextBlock x:Name="TextBlockMenuRazdel2" Text="Раздел 2 меню:"   RelativePanel.Below="TextBoxMenuRazdel1HTML" Margin="20,30,0,0" FontWeight="Bold" />
+
+            <StackPanel x:Name="StackPanelMenuRazdel2" Orientation="Horizontal" RelativePanel.Below="TextBlockMenuRazdel2"  Margin="20,5,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="TextBlockMenuRazdel21" Text="(будет отображен в шапке)"   FontSize="11"/>
+                    <TextBox x:Name="TextBoxMenuRazdel2Name"  Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelMenuRazdel2Link" Orientation="Vertical" Margin="15,0,0,0">
+                    <TextBlock x:Name="TextBlockMenuRazdel22" Text="(ccылка, оставьте пустым для выпадающего меню)"   FontSize="11" />
+                    <TextBox x:Name="TextBoxMenuRazdel2Link" Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockMenuRazdel2Punkt1" Text="HTML-код раздела 2 меню:"   RelativePanel.Below="StackPanelMenuRazdel2" Margin="40,15,0,0" />
+            <TextBlock x:Name="TextBlockMenuRazdel21Punkt1" Text="(содержимое слоя &lt;div class=&quot;yamm-content&quot;&gt;&lt;/div&gt;)"   FontSize="11" RelativePanel.Below="TextBlockMenuRazdel2Punkt1" Margin="40,2,0,0" />
+            <TextBox x:Name="TextBoxMenuRazdel2HTML"  RelativePanel.Below="TextBlockMenuRazdel21Punkt1" Margin="30,5,0,0" Width="600" Height="600"/>
+
+
+            <TextBlock x:Name="TextBlockMenuRazdel3" Text="Раздел 3 меню:"   RelativePanel.Below="TextBoxMenuRazdel2HTML" Margin="20,30,0,0" FontWeight="Bold" />
+
+            <StackPanel x:Name="StackPanelMenuRazdel3" Orientation="Horizontal" RelativePanel.Below="TextBlockMenuRazdel3"  Margin="20,5,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="TextBlockMenuRazdel31" Text="(будет отображен в шапке)"   FontSize="11"/>
+                    <TextBox x:Name="TextBoxMenuRazdel3Name"  Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelMenuRazdel3Link" Orientation="Vertical" Margin="15,0,0,0">
+                    <TextBlock x:Name="TextBlockMenuRazdel32" Text="(ccылка, оставьте пустым для выпадающего меню)"   FontSize="11" />
+                    <TextBox x:Name="TextBoxMenuRazdel3Link" Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockMenuRazdel3Punkt1" Text="HTML-код раздела 3 меню:"   RelativePanel.Below="StackPanelMenuRazdel3" Margin="40,15,0,0" />
+            <TextBlock x:Name="TextBlockMenuRazdel31Punkt1" Text="(содержимое слоя &lt;div class=&quot;yamm-content&quot;&gt;&lt;/div&gt;)"   FontSize="11" RelativePanel.Below="TextBlockMenuRazdel3Punkt1" Margin="40,2,0,0" />
+            <TextBox x:Name="TextBoxMenuRazdel3HTML"  RelativePanel.Below="TextBlockMenuRazdel31Punkt1" Margin="30,5,0,0" Width="600" Height="600"/>
+
+
+            <TextBlock x:Name="TextBlockMenuRazdel4" Text="Раздел 4 меню:"   RelativePanel.Below="TextBoxMenuRazdel3HTML" Margin="20,30,0,0" FontWeight="Bold" />
+
+            <StackPanel x:Name="StackPanelMenuRazdel4" Orientation="Horizontal" RelativePanel.Below="TextBlockMenuRazdel4"  Margin="20,5,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="TextBlockMenuRazdel41" Text="(будет отображен в шапке)"   FontSize="11"/>
+                    <TextBox x:Name="TextBoxMenuRazdel4Name"  Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelMenuRazdel4Link" Orientation="Vertical" Margin="15,0,0,0">
+                    <TextBlock x:Name="TextBlockMenuRazdel42" Text="(ccылка, оставьте пустым для выпадающего меню)"   FontSize="11" />
+                    <TextBox x:Name="TextBoxMenuRazdel4Link" Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockMenuRazdel4Punkt1" Text="HTML-код раздела 4 меню:"   RelativePanel.Below="StackPanelMenuRazdel4" Margin="40,15,0,0" />
+            <TextBlock x:Name="TextBlockMenuRazdel41Punkt1" Text="(содержимое слоя &lt;div class=&quot;yamm-content&quot;&gt;&lt;/div&gt;)"   FontSize="11" RelativePanel.Below="TextBlockMenuRazdel4Punkt1" Margin="40,2,0,0" />
+            <TextBox x:Name="TextBoxMenuRazdel4HTML"  RelativePanel.Below="TextBlockMenuRazdel41Punkt1" Margin="30,5,0,0" Width="600" Height="600"/>
+
+
+            <TextBlock x:Name="TextBlockMenuRazdel5" Text="Раздел 5 меню:"   RelativePanel.Below="TextBoxMenuRazdel4HTML" Margin="20,30,0,0" FontWeight="Bold" />
+
+            <StackPanel x:Name="StackPanelMenuRazdel5" Orientation="Horizontal" RelativePanel.Below="TextBlockMenuRazdel5"  Margin="20,5,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="TextBlockMenuRazdel51" Text="(будет отображен в шапке)"   FontSize="11"/>
+                    <TextBox x:Name="TextBoxMenuRazdel5Name"  Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelMenuRazdel5Link" Orientation="Vertical" Margin="15,0,0,0">
+                    <TextBlock x:Name="TextBlockMenuRazdel52" Text="(ccылка, оставьте пустым для выпадающего меню)"   FontSize="11" />
+                    <TextBox x:Name="TextBoxMenuRazdel5Link" Width="300" Margin="0,2,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockMenuRazdel5Punkt1" Text="HTML-код раздела 5 меню:"   RelativePanel.Below="StackPanelMenuRazdel5" Margin="40,15,0,0" />
+            <TextBlock x:Name="TextBlockMenuRazdel51Punkt1" Text="(содержимое слоя &lt;div class=&quot;yamm-content&quot;&gt;&lt;/div&gt;)"   FontSize="11" RelativePanel.Below="TextBlockMenuRazdel5Punkt1" Margin="40,2,0,0" />
+            <TextBox x:Name="TextBoxMenuRazdel5HTML"  RelativePanel.Below="TextBlockMenuRazdel51Punkt1" Margin="30,5,0,0" Width="600" Height="600"/>
+
+
+            <Button Visibility="Collapsed" x:Name="SaveFileMain" Content="сохранить файл данных шапки и меню (.main)" RelativePanel.Below="TextBoxMenuRazdel5HTML" Margin="20,40,0,0" Background="#992B65E2" Click="SaveFileMain_Click"/>
+            <Button Visibility="Collapsed" x:Name="SaveFileMainTPL" Content="Экспорт файла данных шапки и меню для публикации на сайт (navigation.tpl)" RelativePanel.Below="SaveFileMain" Margin="20,20,0,0" Background="LawnGreen" Click="SaveFileMainTPL_Click"/>
+
+
+            <TextBlock x:Name="TextBlockFtp" Text="Данные для выгрузки файла на FTP"   FontSize="14" FontWeight="Bold" RelativePanel.Below="SaveFileMainTPL" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer" Text="FTP адрес файла на сервере:"   RelativePanel.Below="TextBlockFtp" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer1" Text="(например, ftp://www.123.com/public_html/navigation.tpl)"   FontSize="11" RelativePanel.Below="TextBlockFtpServer" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPServer" Width="300" RelativePanel.Below="TextBlockFtpServer1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpUser" Text="Имя пользователя:"   RelativePanel.Below="TextBoxFTPServer" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpUser1" Text="(например, Anonumous)"   FontSize="11" RelativePanel.Below="TextBlockFtpUser" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPUser" Width="300" RelativePanel.Below="TextBlockFtpUser1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpPass" Text="Пароль:"   RelativePanel.Below="TextBoxFTPUser" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpPass1" Text="(введите пароль от FTP)"   FontSize="11" RelativePanel.Below="TextBlockFtpPass" Margin="20,3,0,0" />
+            <PasswordBox x:Name="TextBoxFTPPass" Width="300" RelativePanel.Below="TextBlockFtpPass1" Margin="20,3,0,0"/>
+            <TextBlock Visibility="Collapsed" x:Name="WarningFTP" Text="Перед отправкой файла по FTP обязательно выполните сохранение TPL-файла на вашем устройстве, иначе на FTP будет загружен пустой файл." FontWeight="Bold" Margin="20,20,0,0" RelativePanel.Below="TextBoxFTPPass" Foreground="#FFF31515"/>
+
+
+            <Button x:Name="FTPFileMainTPL" Content="Выгрузить на FTP готовый файл данных шапки и меню (navigation.tpl)" RelativePanel.Below="WarningFTP" Margin="20,20,0,0" Background="LightBlue" Click="FTPFileMainTPL_Click" Visibility="Collapsed"/>
+
+
+            <TextBlock x:Name="empty_footer" RelativePanel.Below="FTPFileMainTPL" Margin="20,20,0,0"/>
+            <ProgressRing x:Name="Progress" RelativePanel.Below="empty_footer" Margin="20,5,0,0" Foreground="Purple" Background="Transparent"/>
+            <TextBlock x:Name="StatusFile" RelativePanel.Below="Progress" Margin="20,5,0,0" Visibility="Collapsed"/>
+            <TextBlock x:Name="empty_footer2" RelativePanel.Below="StatusFile" Margin="20,20,0,0"/>
+
+            <TextBox x:Name="FileTextBox" Visibility="Collapsed" RelativePanel.Below="empty_footer2"/>
+
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="400" />
+                        <Setter Target="MenuBar.IsOpen" Value="True" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="630" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="390" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="480" />
+                        <Setter Target="Documentation2.Width" Value="480" />
+                        <Setter Target="TextBoxMenuRazdel1HTML.Width" Value="450"/>
+                        <Setter Target="TextBoxMenuRazdel2HTML.Width" Value="450"/>
+                        <Setter Target="TextBoxMenuRazdel3HTML.Width" Value="450"/>
+                        <Setter Target="TextBoxMenuRazdel4HTML.Width" Value="450"/>
+                        <Setter Target="TextBoxMenuRazdel5HTML.Width" Value="450"/>
+                        <Setter Target="TextBlockLogo.Width" Value="450"/>
+                        <Setter Target="TextBlockSTYLENavigation.Width" Value="450"/>
+                        <Setter Target="TextBlockSTYLENavigation0.Width" Value="450"/>
+                        
+
+                        <Setter Target="StackPanelMenuRazdel1.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel1Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel2.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel2Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel3.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel3Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel4.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel4Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel5.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel5Link.Margin" Value="0,10,0,0"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="300" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="400" />
+                        <Setter Target="Documentation2.Width" Value="400" />
+                        <Setter Target="TextBoxMenuRazdel1HTML.Width" Value="300"/>
+                        <Setter Target="TextBoxMenuRazdel2HTML.Width" Value="300"/>
+                        <Setter Target="TextBoxMenuRazdel3HTML.Width" Value="300"/>
+                        <Setter Target="TextBoxMenuRazdel4HTML.Width" Value="300"/>
+                        <Setter Target="TextBoxMenuRazdel5HTML.Width" Value="300"/>
+                        <Setter Target="TextBlockLogo.Width" Value="300"/>
+                        <Setter Target="TextBlockSTYLENavigation.Width" Value="300"/>
+                        <Setter Target="TextBlockSTYLENavigation0.Width" Value="300"/>
+
+                        <Setter Target="StackPanelMenuRazdel1.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel1Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel2.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel2Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel3.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel3Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel4.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel4Link.Margin" Value="0,10,0,0"/>
+
+                        <Setter Target="StackPanelMenuRazdel5.Orientation" Value="Vertical"/>
+                        <Setter Target="StackPanelMenuRazdel5Link.Margin" Value="0,10,0,0"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </ScrollViewer>
+</Page>

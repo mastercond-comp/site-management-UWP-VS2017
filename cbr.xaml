@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Управление.сайтом.cbr"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="MenuBar" HorizontalAlignment="Center" IsSticky="True" CompositeMode="Inherit" Background="White">
+            <AppBarButton Icon="OpenLocal" Label="Загрузить *.cbr" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="LoadFileTCatalog_Click"/>
+            <AppBarButton Icon="Upload" Label="Сохранить *.cbr и выгрузить по FTP" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Save" Label="Сохранить *.cbr" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileKatalogTovarov_Click"/>
+            <AppBarButton Icon="SaveLocal" Label="Сохранить cbr.php" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileKatalogTovarovTPL_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            
+
+            <TextBlock x:Name="TextBlockH1" Text="НАСТРОЙКА СКРИПТА &quot;КУРСЫ ВАЛЮТ&quot;(CBR.PHP)"   FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+            <TextBlock x:Name="TextBlockSettings01" RelativePanel.Below="TextBlockH1" Margin="20,20,0,0" Text="Для ежедневного обновления курса валют добавьте скрипт CBR.PHP в CRON."   />
+
+            <TextBlock x:Name="TextBlockSettings1" RelativePanel.Below="TextBlockSettings01" Margin="20,20,0,0" Text="Абсолютный путь до файла dollar.ini:"   />
+            <TextBlock x:Name="TextBlockSettings2" RelativePanel.Below="TextBlockSettings1" Margin="20,3,0,0" Text="(например, /home/user/public_html/dollar.ini)"   FontSize="11" />
+            <TextBox x:Name="TextBoxDOLLAR" RelativePanel.Below="TextBlockSettings2" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings3" RelativePanel.Below="TextBoxDOLLAR" Margin="20,20,0,0" Text="Абсолютный путь до файла euro.ini:"   />
+            <TextBlock x:Name="TextBlockSettings4" RelativePanel.Below="TextBlockSettings3" Margin="20,3,0,0" Text="(например, /home/user/public_html/euro.ini)"   FontSize="11" />
+            <TextBox x:Name="TextBoxEURO" RelativePanel.Below="TextBlockSettings4" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockFtp" Text="Данные для выгрузки файла на FTP"   FontSize="14" FontWeight="Bold" RelativePanel.Below="TextBoxEURO" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer" Text="FTP адрес файла на сервере:"   RelativePanel.Below="TextBlockFtp" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer1" Text="(например, ftp://www.123.com/public_html/cbr.php)"   FontSize="11" RelativePanel.Below="TextBlockFtpServer" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPServer" Width="300" RelativePanel.Below="TextBlockFtpServer1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpUser" Text="Имя пользователя:"   RelativePanel.Below="TextBoxFTPServer" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpUser1" Text="(например, Anonumous)"   FontSize="11" RelativePanel.Below="TextBlockFtpUser" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPUser" Width="300" RelativePanel.Below="TextBlockFtpUser1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpPass" Text="Пароль:"   RelativePanel.Below="TextBoxFTPUser" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpPass1" Text="(введите пароль от FTP)"   FontSize="11" RelativePanel.Below="TextBlockFtpPass" Margin="20,3,0,0" />
+            <PasswordBox x:Name="TextBoxFTPPass" Width="300" RelativePanel.Below="TextBlockFtpPass1" Margin="20,3,0,0"/>
+            
+            <TextBlock x:Name="empty_footer" RelativePanel.Below="TextBoxFTPPass" Margin="20,20,0,0"/>
+            <ProgressRing x:Name="Progress" RelativePanel.Below="empty_footer" Margin="20,5,0,0" Foreground="Purple" Background="Transparent"/>
+            <TextBlock x:Name="StatusFile" RelativePanel.Below="Progress" Margin="20,5,0,0" Visibility="Collapsed"/>
+            <TextBlock x:Name="empty_footer2" RelativePanel.Below="StatusFile" Margin="20,20,0,0"/>
+
+            <TextBox x:Name="FileTextBox" Visibility="Collapsed" RelativePanel.Below="empty_footer2"/>
+
+
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="400" />
+                        <Setter Target="MenuBar.IsOpen" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="390" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="300" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        
+    </ScrollViewer>
+</Page>

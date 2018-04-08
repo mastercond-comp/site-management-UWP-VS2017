@@ -1,0 +1,235 @@
+﻿<Page
+    x:Class="Управление.сайтом.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:Name="MySplitView" DisplayMode="CompactInline" IsPaneOpen="False">
+        <SplitView.Pane>
+            <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="24" Content="" Width="{Binding ElementName=MySplitView, Path=CompactPaneLength}" VerticalAlignment="Top" Click="HamburgerButton_Click" Foreground="White" Background="Purple" BorderBrush="White">
+                </Button>
+                <ListBox x:Name="MenuListBox" SelectionMode="Single" SelectionChanged="MenuListBox_SelectionChanged">
+
+                    <ListBoxItem Name="DataAndNavigation">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Навигационное меню" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                        <ListBoxItem Name="DataAndNavigationMEGA">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="Навигационное МЕГА-меню" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+
+
+                        <ListBoxItem Name="PAGES">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" FontSize="14" FontWeight="Light" VerticalAlignment="Center" Text="Страницы:" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="IndexPageSettings">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Главная страница" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="ContentPageSettings">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Страница с контентом" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="TovarKatalog">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Страница &quot;КАТАЛОГ ТОВАРОВ&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="TovarSpisokPage">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Страница &quot;Перечень товаров&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="TovarPagesSettings">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Страница &quot;ТОВАР&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                        <ListBoxItem Name="CustomCSS">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="СВОИ CSS СТИЛИ" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+
+
+                        <ListBoxItem Name="MODULES">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" FontSize="14" FontWeight="Light" VerticalAlignment="Center" Text="Модули:" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="TovarIndexPageSettings">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Модуль &quot;Товары на главной&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+               <ListBoxItem Name="ClientsModul">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Модуль &quot;Наши клиенты&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                   <ListBoxItem Name="WorksModul">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Модуль &quot;Наши работы&quot;" />
+                        </StackPanel>
+                    </ListBoxItem> 
+
+                    <ListBoxItem Name="SliderModul">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Модуль &quot;Слайдер&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+             
+
+                    <ListBoxItem Name="IndexNewsModul">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Модуль &quot;Новости на главной&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                        <ListBoxItem Name="FooterModul">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Модуль &quot;Футер&quot;" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                        <ListBoxItem Name="FooterScriptsModul">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="Скрипты в футере" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="CustomModul">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="Свой модуль" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+
+
+                        <ListBoxItem Name="CURRENTPROGRAM">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" FontSize="14" FontWeight="Light" VerticalAlignment="Center" Text="Прочее:" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="HeaderModul">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="Модуль HEADER.TPL" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="CBR">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="Скрипт &quot;Курсы валют&quot;" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="Distr">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                                <TextBlock  Margin="20,0,0,0" Text="Загрузки" />
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="Help">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="Справка" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="About">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="" />
+                            <TextBlock  Margin="20,0,0,0" Text="О программе" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                </ListBox>
+            </StackPanel>
+            </ScrollViewer>
+        </SplitView.Pane>
+        
+
+        <SplitView.Content>
+            <Frame Name="ContentFrame" ></Frame>
+        </SplitView.Content>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False" />
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </SplitView>
+</Page>

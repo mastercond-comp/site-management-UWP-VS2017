@@ -1,0 +1,299 @@
+﻿<Page
+    x:Class="Управление.сайтом.RootPageSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="MenuBar" HorizontalAlignment="Center" IsSticky="True" CompositeMode="Inherit" Background="White">
+            <AppBarButton Icon="OpenLocal" Label="Загрузить *.indexpage" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="LoadFilePage_Click"/>
+            <AppBarButton Icon="Upload" Label="Сохранить *.indexpage и выгрузить по FTP" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Save" Label="Сохранить *.indexpage"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileTovar_Click"/>
+            <AppBarButton Icon="SaveLocal" Label="Сохранить index.php"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileTovarPHP_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TextBlockH1" Text="ГЛАВНАЯ СТРАНИЦА"   FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+
+            <Image x:Name="OpisanieImageIMG" Source="ms-appx:///Assets/wwwmastercondruscreenshot.jpg" Width="630" RelativePanel.Below="TextBlockH1" Margin="20,30,0,0"/>
+            <TextBlock x:Name="ImageOpisanie" Text="(пример страницы &quot;ГЛАВНАЯ СТРАНИЦА САЙТА&quot;)" Margin="20,5,0,0" RelativePanel.Below="OpisanieImageIMG" FontSize="12" />
+            <Rectangle x:Name="RazdelitelImage1" RelativePanel.Below="ImageOpisanie" Fill="#FFF4F4F5" Height="0.7" Width="1000" Margin="20,20,0,0"/>
+
+            <Button Visibility="Collapsed" x:Name="LoadFilePage" Content="Загрузить файл данных главной страницы (.indexpage)" RelativePanel.Below="RazdelitelImage1" Margin="20,35,0,0" Background="#992B65E2" Click="LoadFilePage_Click"/>
+
+            <TextBlock x:Name="TextBlockSettings01" RelativePanel.Below="LoadFilePage" Margin="20,35,0,0" Text="Заголовок страницы в браузере:"   />
+            <TextBlock x:Name="TextBlockSettings02" RelativePanel.Below="TextBlockSettings01" Margin="20,3,0,0" Text="(например, Монтаж теплых полов в компании TheBestCompany)"   FontSize="11" />
+            <TextBox x:Name="TextBoxZagolovokPage" RelativePanel.Below="TextBlockSettings02" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings001" RelativePanel.Below="TextBoxZagolovokPage" Margin="20,20,0,0" Text="Ключевые слова страницы для поисковиков (meta name=&quot;keywords&quot;):"  TextWrapping="WrapWholeWords" />
+            <TextBlock x:Name="TextBlockSettings002" RelativePanel.Below="TextBlockSettings001" Margin="20,3,0,0" Text="(например, теплые полы, терморегулятор [указываются через запятую])"   FontSize="11" TextWrapping="WrapWholeWords"/>
+            <TextBox x:Name="TextBoxKeywords" RelativePanel.Below="TextBlockSettings002" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings0001" RelativePanel.Below="TextBoxKeywords" Margin="20,20,0,0" Text="Описание страницы для поисковиков (meta name=&quot;description&quot;):"   TextWrapping="WrapWholeWords"/>
+            <TextBlock x:Name="TextBlockSettings0002" RelativePanel.Below="TextBlockSettings0001" Margin="20,3,0,0" Text="(например, Каталог лучших теплых полов от компании TheBestCompany)"   FontSize="11" TextWrapping="WrapWholeWords"/>
+            <TextBox x:Name="TextBoxMetaDescription" RelativePanel.Below="TextBlockSettings0002" Margin="20,3,0,0" Width="300" />
+
+            <Rectangle x:Name="Razdelitel01" RelativePanel.Below="TextBoxMetaDescription" Fill="#FFF4F4F5" Height="0.5" Width="1000" Margin="20,10,0,0"/>
+
+
+            <TextBlock x:Name="TextBlock0Settings000001" RelativePanel.Below="TextBoxMetaDescription" Margin="20,20,0,0" Text="Основной шрифт страницы (в основном - заголовки):"   />
+            <TextBlock x:Name="TextBlock0Settings000002" RelativePanel.Below="TextBlock0Settings000001" Margin="20,3,0,0" Text="(например, Tahoma)"   FontSize="11" />
+            <TextBox x:Name="TextBoxFontBody" RelativePanel.Below="TextBlock0Settings000002" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings000001" RelativePanel.Below="TextBoxFontBody" Margin="20,20,0,0" Text="Шрифт текста на странице:"   />
+            <TextBlock x:Name="TextBlockSettings000002" RelativePanel.Below="TextBlockSettings000001" Margin="20,3,0,0" Text="(например, Tahoma)"   FontSize="11" />
+            <TextBox x:Name="TextBoxFont" RelativePanel.Below="TextBlockSettings000002" Margin="20,3,0,0" Width="300" />
+
+            <Rectangle x:Name="Razdelitel001" RelativePanel.Below="TextBoxFont" Fill="#FFF4F4F5" Height="0.5" Width="1000" Margin="20,10,0,0"/>
+
+
+            <TextBlock x:Name="TextBlockSettings1" RelativePanel.Below="TextBoxFont" Margin="20,20,0,0" Text="Цвет текста заголовка страницы:"   />
+            <TextBlock x:Name="TextBlockSettings2" RelativePanel.Below="TextBlockSettings1" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxZagolovokColor" RelativePanel.Below="TextBlockSettings2" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings3" RelativePanel.Below="TextBoxZagolovokColor" Margin="20,20,0,0" Text="Цвет текста содержания страницы:"   />
+            <TextBlock x:Name="TextBlockSettings4" RelativePanel.Below="TextBlockSettings3" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxKategoriiTextColor" RelativePanel.Below="TextBlockSettings4" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockSettings7" RelativePanel.Below="TextBoxKategoriiTextColor" Margin="20,20,0,0" Text="Цвет фона страницы:"   />
+            <TextBlock x:Name="TextBlockSettings8" RelativePanel.Below="TextBlockSettings7" Margin="20,3,0,0" Text="(например, white, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxBackgroundColor" RelativePanel.Below="TextBlockSettings8" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings99" RelativePanel.Below="TextBoxBackgroundColor" Margin="20,20,0,0" Text="Ссылка на файл со своими CSS-стилями:"   />
+            <TextBlock x:Name="TextBlockSettings910" RelativePanel.Below="TextBlockSettings99" Margin="20,3,0,0" Text="(например, /css/my.css)"   FontSize="11" />
+            <TextBox x:Name="TextBoxCUSTOMCSS" RelativePanel.Below="TextBlockSettings910" Margin="20,5,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockSettings9" RelativePanel.Below="TextBoxCUSTOMCSS" Margin="20,20,0,0" Text="СВОИ СТИЛИ между тегами &lt;style&gt;&lt;/style&gt;:"   />
+            <TextBlock x:Name="TextBlockSettings10" RelativePanel.Below="TextBlockSettings9" Margin="20,3,0,0" Text="(например, p {font-size:15px;})"   FontSize="11" />
+            <TextBlock x:Name="TextBlockSettings010" RelativePanel.Below="TextBlockSettings10" Margin="20,5,0,0" Text="* Для оформления модуля &quot;Товары на главной&quot; задайте здесь стили div.tovar-image {}, div.tovar-text {}"   FontSize="11" Width="300" TextWrapping="WrapWholeWords" />
+            <TextBlock x:Name="TextBlockSettings0010" RelativePanel.Below="TextBlockSettings010" Margin="20,5,0,0" Text="* Для оформления модуля &quot;Наши работы&quot; задайте здесь стили div.works-image {}, div.works-text {}, h4.works {}, p.works {}"   FontSize="11" Width="300" TextWrapping="WrapWholeWords" />
+            <TextBlock x:Name="TextBlockSettings00010" RelativePanel.Below="TextBlockSettings0010" Margin="20,5,0,0" Text="* Для оформления модуля &quot;Наши клиенты&quot; задайте здесь стили div.clients-image {}, div.clients-text {}, h4.clients {}, p.clients {}"   FontSize="11" Width="300" TextWrapping="WrapWholeWords" />
+            <TextBlock x:Name="TextBlockSettings000010" RelativePanel.Below="TextBlockSettings00010" Margin="20,5,0,0" Text="* Для оформления модуля &quot;Наши новости&quot; задайте здесь стили h5.news {}, p.news {}"   FontSize="11" Width="300" TextWrapping="WrapWholeWords" />
+
+
+            <TextBox x:Name="TextBoxSTYLE" RelativePanel.Below="TextBlockSettings000010" Margin="20,5,0,0" Width="300" />
+
+
+            <Rectangle x:Name="Razdelitel" RelativePanel.Below="TextBoxSTYLE" Fill="#FFF4F4F5" Height="0.7" Width="1000" Margin="20,25,0,0"/>
+
+            <TextBlock x:Name="TextBlockH2" Text="СОДЕРЖИМОЕ СТРАНИЦЫ" RelativePanel.Below="Razdelitel" Margin="20,30,0,0" FontWeight="SemiBold"/>
+
+            <TextBlock x:Name="TextBlockModule1Text1" Text="Модуль № 1" RelativePanel.Below="TextBlockH2" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule1" RelativePanel.Below="TextBlockH2" RelativePanel.RightOf="TextBlockModule1Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo011" Content="Выберите содержимое" Tapped="Combo011_Tapped"/>
+                <ComboBoxItem x:Name="Combo11" Content="Слайдер" Tapped="Combo11_Tapped"/>
+                <ComboBoxItem x:Name="Combo12" Content="Товары на главной" Tapped="Combo12_Tapped"/>
+                <ComboBoxItem x:Name="Combo13" Content="Новости" Tapped="Combo13_Tapped"/>
+                <ComboBoxItem x:Name="Combo14" Content="Наши клиенты" Tapped="Combo14_Tapped"/>
+                <ComboBoxItem x:Name="Combo15" Content="Наши работы" Tapped="Combo15_Tapped"/>
+                <ComboBoxItem x:Name="Combo16" Content="Свой HTML-код" Tapped="Combo16_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule1HTML" RelativePanel.Below="ComboBoxModule1" Width="330" Margin="20,10,0,0" Visibility="Collapsed"/>
+
+            <TextBlock x:Name="TextBlockModule2Text1" Text="Модуль № 2" RelativePanel.Below="TextBoxModule1HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule2" RelativePanel.Below="TextBoxModule1HTML" RelativePanel.RightOf="TextBlockModule2Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo021" Content="Выберите содержимое" Tapped="Combo021_Tapped"/>
+                <ComboBoxItem x:Name="Combo21" Content="Слайдер" Tapped="Combo21_Tapped"/>
+                <ComboBoxItem x:Name="Combo22" Content="Товары на главной" Tapped="Combo22_Tapped"/>
+                <ComboBoxItem x:Name="Combo23" Content="Новости" Tapped="Combo23_Tapped"/>
+                <ComboBoxItem x:Name="Combo24" Content="Наши клиенты" Tapped="Combo24_Tapped"/>
+                <ComboBoxItem x:Name="Combo25" Content="Наши работы" Tapped="Combo25_Tapped"/>
+                <ComboBoxItem x:Name="Combo26" Content="Свой HTML-код" Tapped="Combo26_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule2HTML" RelativePanel.Below="ComboBoxModule2" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule3Text1" Text="Модуль № 3" RelativePanel.Below="TextBoxModule2HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule3" RelativePanel.Below="TextBoxModule2HTML" RelativePanel.RightOf="TextBlockModule3Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo031" Content="Выберите содержимое" Tapped="Combo031_Tapped"/>
+                <ComboBoxItem x:Name="Combo31" Content="Слайдер" Tapped="Combo31_Tapped"/>
+                <ComboBoxItem x:Name="Combo32" Content="Товары на главной" Tapped="Combo32_Tapped"/>
+                <ComboBoxItem x:Name="Combo33" Content="Новости" Tapped="Combo33_Tapped"/>
+                <ComboBoxItem x:Name="Combo34" Content="Наши клиенты" Tapped="Combo34_Tapped"/>
+                <ComboBoxItem x:Name="Combo35" Content="Наши работы" Tapped="Combo35_Tapped"/>
+                <ComboBoxItem x:Name="Combo36" Content="Свой HTML-код" Tapped="Combo36_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule3HTML" RelativePanel.Below="ComboBoxModule3" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule4Text1" Text="Модуль № 4" RelativePanel.Below="TextBoxModule3HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule4" RelativePanel.Below="TextBoxModule3HTML" RelativePanel.RightOf="TextBlockModule4Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo041" Content="Выберите содержимое" Tapped="Combo041_Tapped"/>
+                <ComboBoxItem x:Name="Combo41" Content="Слайдер" Tapped="Combo41_Tapped"/>
+                <ComboBoxItem x:Name="Combo42" Content="Товары на главной" Tapped="Combo42_Tapped"/>
+                <ComboBoxItem x:Name="Combo43" Content="Новости" Tapped="Combo43_Tapped"/>
+                <ComboBoxItem x:Name="Combo44" Content="Наши клиенты" Tapped="Combo44_Tapped"/>
+                <ComboBoxItem x:Name="Combo45" Content="Наши работы" Tapped="Combo45_Tapped"/>
+                <ComboBoxItem x:Name="Combo46" Content="Свой HTML-код" Tapped="Combo46_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule4HTML" RelativePanel.Below="ComboBoxModule4" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule5Text1" Text="Модуль № 5" RelativePanel.Below="TextBoxModule4HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule5" RelativePanel.Below="TextBoxModule4HTML" RelativePanel.RightOf="TextBlockModule5Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo051" Content="Выберите содержимое" Tapped="Combo051_Tapped"/>
+                <ComboBoxItem x:Name="Combo51" Content="Слайдер" Tapped="Combo51_Tapped"/>
+                <ComboBoxItem x:Name="Combo52" Content="Товары на главной" Tapped="Combo52_Tapped"/>
+                <ComboBoxItem x:Name="Combo53" Content="Новости" Tapped="Combo53_Tapped"/>
+                <ComboBoxItem x:Name="Combo54" Content="Наши клиенты" Tapped="Combo54_Tapped"/>
+                <ComboBoxItem x:Name="Combo55" Content="Наши работы" Tapped="Combo55_Tapped"/>
+                <ComboBoxItem x:Name="Combo56" Content="Свой HTML-код" Tapped="Combo56_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule5HTML" RelativePanel.Below="ComboBoxModule5" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule6Text1" Text="Модуль № 6" RelativePanel.Below="TextBoxModule5HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule6" RelativePanel.Below="TextBoxModule5HTML" RelativePanel.RightOf="TextBlockModule6Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo061" Content="Выберите содержимое" Tapped="Combo061_Tapped"/>
+                <ComboBoxItem x:Name="Combo61" Content="Слайдер" Tapped="Combo61_Tapped"/>
+                <ComboBoxItem x:Name="Combo62" Content="Товары на главной" Tapped="Combo62_Tapped"/>
+                <ComboBoxItem x:Name="Combo63" Content="Новости" Tapped="Combo63_Tapped"/>
+                <ComboBoxItem x:Name="Combo64" Content="Наши клиенты" Tapped="Combo64_Tapped"/>
+                <ComboBoxItem x:Name="Combo65" Content="Наши работы" Tapped="Combo65_Tapped"/>
+                <ComboBoxItem x:Name="Combo66" Content="Свой HTML-код" Tapped="Combo66_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule6HTML" RelativePanel.Below="ComboBoxModule6" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule7Text1" Text="Модуль № 7" RelativePanel.Below="TextBoxModule6HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule7" RelativePanel.Below="TextBoxModule6HTML" RelativePanel.RightOf="TextBlockModule7Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo071" Content="Выберите содержимое" Tapped="Combo071_Tapped"/>
+                <ComboBoxItem x:Name="Combo71" Content="Слайдер" Tapped="Combo71_Tapped"/>
+                <ComboBoxItem x:Name="Combo72" Content="Товары на главной" Tapped="Combo72_Tapped"/>
+                <ComboBoxItem x:Name="Combo73" Content="Новости" Tapped="Combo73_Tapped"/>
+                <ComboBoxItem x:Name="Combo74" Content="Наши клиенты" Tapped="Combo74_Tapped"/>
+                <ComboBoxItem x:Name="Combo75" Content="Наши работы" Tapped="Combo75_Tapped"/>
+                <ComboBoxItem x:Name="Combo76" Content="Свой HTML-код" Tapped="Combo76_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule7HTML" RelativePanel.Below="ComboBoxModule7" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule8Text1" Text="Модуль № 8" RelativePanel.Below="TextBoxModule7HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule8" RelativePanel.Below="TextBoxModule7HTML" RelativePanel.RightOf="TextBlockModule8Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo081" Content="Выберите содержимое" Tapped="Combo081_Tapped"/>
+                <ComboBoxItem x:Name="Combo81" Content="Слайдер" Tapped="Combo81_Tapped"/>
+                <ComboBoxItem x:Name="Combo82" Content="Товары на главной" Tapped="Combo82_Tapped"/>
+                <ComboBoxItem x:Name="Combo83" Content="Новости" Tapped="Combo83_Tapped"/>
+                <ComboBoxItem x:Name="Combo84" Content="Наши клиенты" Tapped="Combo84_Tapped"/>
+                <ComboBoxItem x:Name="Combo85" Content="Наши работы" Tapped="Combo85_Tapped"/>
+                <ComboBoxItem x:Name="Combo86" Content="Свой HTML-код" Tapped="Combo86_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule8HTML" RelativePanel.Below="ComboBoxModule8" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule9Text1" Text="Модуль № 9" RelativePanel.Below="TextBoxModule8HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule9" RelativePanel.Below="TextBoxModule8HTML" RelativePanel.RightOf="TextBlockModule9Text1" Margin="20,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo091" Content="Выберите содержимое" Tapped="Combo091_Tapped"/>
+                <ComboBoxItem x:Name="Combo91" Content="Слайдер" Tapped="Combo91_Tapped"/>
+                <ComboBoxItem x:Name="Combo92" Content="Товары на главной" Tapped="Combo92_Tapped"/>
+                <ComboBoxItem x:Name="Combo93" Content="Новости" Tapped="Combo93_Tapped"/>
+                <ComboBoxItem x:Name="Combo94" Content="Наши клиенты" Tapped="Combo94_Tapped"/>
+                <ComboBoxItem x:Name="Combo95" Content="Наши работы" Tapped="Combo95_Tapped"/>
+                <ComboBoxItem x:Name="Combo96" Content="Свой HTML-код" Tapped="Combo96_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule9HTML" RelativePanel.Below="ComboBoxModule9" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockModule10Text1" Text="Модуль № 10" RelativePanel.Below="TextBoxModule9HTML" Margin="20,20,0,0" />
+            <ComboBox x:Name="ComboBoxModule10" RelativePanel.Below="TextBoxModule9HTML" RelativePanel.RightOf="TextBlockModule10Text1" Margin="12,12,0,0" Width="210">
+                <ComboBoxItem x:Name="Combo0101" Content="Выберите содержимое" Tapped="Combo0101_Tapped"/>
+                <ComboBoxItem x:Name="Combo101" Content="Слайдер" Tapped="Combo101_Tapped"/>
+                <ComboBoxItem x:Name="Combo102" Content="Товары на главной" Tapped="Combo102_Tapped"/>
+                <ComboBoxItem x:Name="Combo103" Content="Новости" Tapped="Combo103_Tapped"/>
+                <ComboBoxItem x:Name="Combo104" Content="Наши клиенты" Tapped="Combo104_Tapped"/>
+                <ComboBoxItem x:Name="Combo105" Content="Наши работы" Tapped="Combo105_Tapped"/>
+                <ComboBoxItem x:Name="Combo106" Content="Свой HTML-код" Tapped="Combo106_Tapped"/>
+            </ComboBox>
+            <TextBox x:Name="TextBoxModule10HTML" RelativePanel.Below="ComboBoxModule10" Width="330" Visibility="Collapsed" Margin="20,10,0,0"/>
+
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie58" Text="ВНИМАНИЕ! Для нормальной работы созданного в приложении сайта обязательно сгенерируйте в программе файлы footer.tpl (раздел Модуль &quot;Футер&quot;) и footerscripts.tpl (раздел &quot;Скрипты в футере&quot;) и выгрузите их на сайт в public_html (туда же, где находится index.php). Без этих двух файлов сайт не будет работать корректно." TextWrapping="WrapWholeWords"  Margin="20,20,0,0" RelativePanel.Below="TextBoxModule10HTML"  FontWeight="SemiBold" Foreground="Purple"/>
+
+
+
+            <Button Visibility="Collapsed" x:Name="SaveFileTovar" Content="сохранить файл данных главной страницы (.indexpage)" RelativePanel.Below="TextBlockCreateDocumentsOpisanie58" Margin="20,40,0,0" Background="#992B65E2" Click="SaveFileTovar_Click"/>
+            <Button Visibility="Collapsed" x:Name="SaveFileTovarPHP" Content="Экспорт страницы (.php)" RelativePanel.Below="SaveFileTovar" Margin="20,20,0,0" Background="LawnGreen" Click="SaveFileTovarPHP_Click"/>
+
+
+            <TextBlock x:Name="TextBlockFtp" Text="Данные для выгрузки файла на FTP"   FontSize="14" FontWeight="Bold" RelativePanel.Below="SaveFileTovarPHP" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer" Text="FTP адрес файла на сервере:"   RelativePanel.Below="TextBlockFtp" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer1" Text="(например, ftp://www.123.com/public_html/index.php)"   FontSize="11" RelativePanel.Below="TextBlockFtpServer" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPServer" Width="300" RelativePanel.Below="TextBlockFtpServer1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpUser" Text="Имя пользователя:"   RelativePanel.Below="TextBoxFTPServer" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpUser1" Text="(например, Anonumous)"   FontSize="11" RelativePanel.Below="TextBlockFtpUser" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPUser" Width="300" RelativePanel.Below="TextBlockFtpUser1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpPass" Text="Пароль:"   RelativePanel.Below="TextBoxFTPUser" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpPass1" Text="(введите пароль от FTP)"   FontSize="11" RelativePanel.Below="TextBlockFtpPass" Margin="20,3,0,0" />
+            <PasswordBox x:Name="TextBoxFTPPass" Width="300" RelativePanel.Below="TextBlockFtpPass1" Margin="20,3,0,0"/>
+            <TextBlock Visibility="Collapsed" x:Name="WarningFTP" Text="Перед отправкой файла по FTP обязательно выполните сохранение PHP-файла на вашем устройстве, иначе на FTP будет загружен пустой файл." FontWeight="Bold" Margin="20,20,0,0" RelativePanel.Below="TextBoxFTPPass" Foreground="#FFF31515"/>
+
+
+            <Button Visibility="Collapsed" x:Name="FTPFileTovarPHP" Content="Выгрузить на FTP готовый файл главной страницы (.php)" RelativePanel.Below="WarningFTP" Margin="20,20,0,0" Background="LightBlue" Click="FTPFileTovarPHP_Click"/>
+
+
+            <TextBlock x:Name="empty_footer" RelativePanel.Below="FTPFileTovarPHP" Margin="20,20,0,0"/>
+            <ProgressRing x:Name="Progress" RelativePanel.Below="empty_footer" Margin="20,5,0,0" Foreground="Purple" Background="Transparent"/>
+            <TextBlock x:Name="StatusFile" RelativePanel.Below="Progress" Margin="20,5,0,0" Visibility="Collapsed"/>
+            <TextBlock x:Name="empty_footer2" RelativePanel.Below="StatusFile" Margin="20,20,0,0"/>
+
+            <TextBox x:Name="FileTextBox" Visibility="Collapsed" RelativePanel.Below="empty_footer2"/>
+
+
+
+        </RelativePanel>
+
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="400" />
+                        <Setter Target="MenuBar.IsOpen" Value="True" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="630" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie58.Width" Value="630"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="390" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="480" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie58.Width" Value="480"/>
+                        <Setter Target="TextBlockSettings001.Width" Value="480"/>
+                        <Setter Target="TextBlockSettings0001.Width" Value="480"/>
+
+
+                        <Setter Target="TextBlockSettings002.Width" Value="480"/>
+                        <Setter Target="TextBlockSettings0002.Width" Value="480"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="300" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="300" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie58.Width" Value="300"/>
+                        <Setter Target="TextBlockSettings001.Width" Value="300"/>
+                        <Setter Target="TextBlockSettings0001.Width" Value="300"/>
+
+
+                        <Setter Target="TextBlockSettings002.Width" Value="300"/>
+                        <Setter Target="TextBlockSettings0002.Width" Value="300"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+    </ScrollViewer>
+</Page>

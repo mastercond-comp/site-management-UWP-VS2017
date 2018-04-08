@@ -1,0 +1,142 @@
+﻿<Page
+    x:Class="Управление.сайтом.QuickPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+            <TextBlock x:Name="TextBlockNEWS" Text="ИСТОРИЯ ИЗМЕНЕНИЙ В ВЕРСИЯХ ПРИЛОЖЕНИЯ"  FontSize="16" FontWeight="SemiBold" Margin="20,10,0,0" Foreground="Purple"/>
+
+            <ScrollViewer x:Name="NewsScrollViewer" RelativePanel.Below="TextBlockNEWS" Margin="20,20,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Auto">
+
+                <StackPanel x:Name="TextBlockNEWSOpisanie" Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.1.2" FontWeight="SemiBold" Width="45" />
+                        <TextBlock x:Name="Version112" Text="Оптимизация адаптивности и кода отображения некоторых разделов. Улучшен раздел &quot;Навигационное меню&quot;." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.1.1" FontWeight="SemiBold" Width="45" />
+                        <TextBlock x:Name="Version111" Text="Оптимизация и небольшие улучшения раздела &quot;Перечень товаров&quot;. Количество слайдов в модуле &quot;Слайдер&quot; увеличено до 10." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.22" FontWeight="SemiBold" Width="45" />
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="Version1022" Text="Добавлен раздел &quot;Загрузки&quot;. В этом разделе находятся: файлы дистрибутива bootstrap и debug-версия приложения Управление.сайтом для телефонов на Windows 10 Mobile. " Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                            <TextBlock x:Name="Version10222" Text="Отредактированы файлы bootstrap.min.css и carousel.css из bootstrap-дистрибутива. Исправлены ошибки отображения слайдера на мобильных устройствах. Для устранения проблемы замените файлы bootstrap.min.css и carousel.css из папки css вашего сайта. Обновленные файлы находятся в разделе &quot;Загрузки&quot;, в дистрибутиве Bootstrap." Margin="15,15,0,0" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.21" FontWeight="SemiBold" Width="45" />
+                        <TextBlock x:Name="Version1021" Text="В модулях &quot;Наши работы&quot; и &quot;Наши клиенты&quot; изменены классы тегов div с &quot;col-md-3&quot; на &quot;col-xs-6 col-md-3&quot; для корректного отображения элементов этих модулей на мобильных устройствах. Откройте модули в приложении и выгрузите их на свой сайт для обновления. Добавлена возможность отображения удобной панели навигации для раздела &quot;Перечень товаров&quot;." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.20" FontWeight="SemiBold" Width="45"/>
+                        <TextBlock x:Name="Version1020" Text="Исправление ошибок, доработки модуля &quot;ПЕРЕЧЕНЬ ТОВАРОВ&quot;." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.17" FontWeight="SemiBold" Width="45"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="Version1017" Text="Добавлен раздел &quot;Модуль HEADER.TPL&quot;. Добавлена ссылка на DEBUG-версию приложения УПРАВЛЕНИЕ.САЙТОМ для телефонов (arm-версия). " Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                            </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.16" FontWeight="SemiBold" Width="45"/>
+                        <TextBlock x:Name="Version1016" Text="Преобразован раздел &quot;Перечень товаров&quot;." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.15" FontWeight="SemiBold" Width="45"/>
+                        <TextBlock x:Name="Version1015" Text="Добавлен раздел &quot;МЕГАМЕНЮ&quot; на базе дополнения YAMM3 к Bootstrap. В разделы &quot;Скрипты в футере&quot; и &quot;СВОИ CSS СТИЛИ&quot; добавлены кнопки для добавления поддержки МЕГАменю на вашем сайте." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock Text="1.0.14" FontWeight="SemiBold" Width="45"/>
+                        <TextBlock x:Name="Version1014" Text="Во всех разделах (кроме раздела &quot;Перечень товаров&quot;) для удобства и быстрого обновления информации добавлена кнопка &quot;Сохранить и выгрузить на сайт&quot;. Исправлен ряд недочетов на странице &quot;Товары на главной&quot;, исправлены ошибки в разделе &quot;Главная Страница&quot;, добавлена поддержка своих стилей в разделе &quot;Главная страница&quot; путем добавления css-данных между тегами &lt;style&gt;&lt;/style&gt;. Добавлен php-код для вставки модулей в произвольную страницу сайта. Добавлена ссылка загрузки debug-версии программы Управление.сайтом для телефонов под управлением Windows 10 Mobile (ссылка находится в разделе &quot;О программе&quot;). Изменился разделитель в разделе &quot;Общие данные и навигация&quot;. Чтобы созданные файлы открылись, откройте .main файл в текстовом редакторе и замените все знаки &quot;;&quot; на &quot;|&quot;. Добавлен раздел конфигурирования скрипта получения курсов валют cbr.php. Добавлен модуль &quot;Наши работы&quot;. Добавлен модуль &quot;Наши клиенты&quot;. Добавлены разделы &quot;Свой модуль&quot;, &quot;Скрипты в футере&quot;, &quot;Футер&quot;, добавлена возможность создавать свои CSS стили оформления элементов." Margin="15,0,0,0" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+
+
+
+
+
+            <TextBlock RelativePanel.Below="NewsScrollViewer" Margin="20,30,0,0"/>
+
+
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TextBlockNEWS.Width" Value="700" />
+                        <Setter Target="Version1014.Width" Value="640" />
+                        <Setter Target="Version1015.Width" Value="640" />
+                        <Setter Target="Version1016.Width" Value="640" />
+                        <Setter Target="Version1017.Width" Value="640" />
+                        <Setter Target="Version1020.Width" Value="640" />
+                        <Setter Target="Version1021.Width" Value="640" />
+                        <Setter Target="Version1022.Width" Value="640" />
+                        <Setter Target="Version10222.Width" Value="640" />
+                        <Setter Target="Version111.Width" Value="640" />
+                        <Setter Target="Version112.Width" Value="640" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TextBlockNEWS.Width" Value="420" />
+                        <Setter Target="Version1014.Width" Value="370" />
+                        <Setter Target="Version1015.Width" Value="370" />
+                        <Setter Target="Version1016.Width" Value="370" />
+                        <Setter Target="Version1017.Width" Value="370" />
+                        <Setter Target="Version1020.Width" Value="370" />
+                        <Setter Target="Version1021.Width" Value="370" />
+                        <Setter Target="Version1022.Width" Value="370" />
+                        <Setter Target="Version10222.Width" Value="370" />
+                        <Setter Target="Version111.Width" Value="370" />
+                        <Setter Target="Version112.Width" Value="370" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TextBlockNEWS.Width" Value="320" />
+                        <Setter Target="Version1014.Width" Value="230" />
+                        <Setter Target="Version1015.Width" Value="230" />
+                        <Setter Target="Version1016.Width" Value="230" />
+                        <Setter Target="Version1017.Width" Value="230" />
+                        <Setter Target="Version1020.Width" Value="230" />
+                        <Setter Target="Version1021.Width" Value="230" />
+                        <Setter Target="Version1022.Width" Value="230" />
+                        <Setter Target="Version10222.Width" Value="230" />
+                        <Setter Target="Version111.Width" Value="230" />
+                        <Setter Target="Version112.Width" Value="230" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,337 @@
+﻿<Page
+    x:Class="Управление.сайтом.RootTovarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="MenuBar" HorizontalAlignment="Center" IsSticky="True" CompositeMode="Inherit" Background="White">
+            <AppBarButton Icon="OpenLocal" Label="Загрузить *.indextovar" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="LoadFileIndexTovari_Click"/>
+            <AppBarButton Icon="Upload" Label="Сохранить *.indextovar и выгрузить по FTP" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Save" Label="Сохранить *.indextovar"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileIndexTovari_Click"/>
+            <AppBarButton Icon="SaveLocal" Label="Сохранить tovari_index.tpl"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileIndexTovariTPL_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            
+            <TextBlock x:Name="TextBlockH1" Text="МОДУЛЬ &quot;ПОПУЛЯРНЫЕ ТОВАРЫ НА ГЛАВНОЙ СТРАНИЦЕ САЙТА&quot;"   FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+
+            <Image x:Name="OpisanieImageIMG" Source="ms-appx:///Assets/POPULARTOVARINAGLAVNOJSscreenshot.png" Width="630" RelativePanel.Below="TextBlockH1" Margin="20,30,0,0"/>
+            <TextBlock x:Name="ImageOpisanie" Text="(пример модуля &quot;ПОПУЛЯРНЫЕ ТОВАРЫ НА ГЛАВНОЙ&quot;)" Margin="20,5,0,0" RelativePanel.Below="OpisanieImageIMG" FontSize="12" />
+            <TextBlock x:Name="AddModulPHP" Text="Для добавления модуля в произвольную страницу добавьте &lt;?php require('tovari_index.tpl'); ?&gt;" Margin="20,20,0,0" RelativePanel.Below="ImageOpisanie" FontSize="14" FontWeight="Medium"/>
+
+            <Rectangle x:Name="RazdelitelImage1" RelativePanel.Below="AddModulPHP" Fill="#FFF4F4F5" Height="0.7" Width="1000" Margin="20,20,0,0"/>
+
+
+
+            <Button Visibility="Collapsed" x:Name="LoadFileIndexTovari" Content="Загрузить файл данных модуля &quot;ПОПУЛЯРНЫЕ ТОВАРЫ НА ГЛАВНОЙ СТРАНИЦЕ&quot;(.indextovar)" RelativePanel.Below="RazdelitelImage1" Margin="20,35,0,0" Background="#992B65E2" Click="LoadFileIndexTovari_Click" />
+            <TextBlock x:Name="TextBlockSettings1" RelativePanel.Below="LoadFileIndexTovari" Margin="20,20,0,0" Text="Цвет текста заголовка &quot;ПОПУЛЯРНЫЕ ТОВАРЫ&quot;:"   />
+            <TextBlock x:Name="TextBlockSettings2" RelativePanel.Below="TextBlockSettings1" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxZagolovokColor" RelativePanel.Below="TextBlockSettings2" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings5" RelativePanel.Below="TextBoxZagolovokColor" Margin="20,20,0,0" Text="Цвет текста в разделе &quot;ПОПУЛЯРНЫЕ ТОВАРЫ&quot;:"   />
+            <TextBlock x:Name="TextBlockSettings6" RelativePanel.Below="TextBlockSettings5" Margin="20,3,0,0" Text="(например, black, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxTovariTextColor" RelativePanel.Below="TextBlockSettings6" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings7" RelativePanel.Below="TextBoxTovariTextColor" Margin="20,20,0,0" Text="Шрифт текста в разделе &quot;ПОПУЛЯРНЫЕ ТОВАРЫ&quot;:"   />
+            <TextBlock x:Name="TextBlockSettings8" RelativePanel.Below="TextBlockSettings7" Margin="20,3,0,0" Text="(например, Tahoma или TimesNewRoman)"   FontSize="11" />
+            <TextBox x:Name="TextBoxTovariShrift" RelativePanel.Below="TextBlockSettings8" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings07" RelativePanel.Below="TextBoxTovariShrift" Margin="20,20,0,0" Text="Шрифт модели и цены товара в разделе &quot;ПОПУЛЯРНЫЕ ТОВАРЫ&quot;:"   />
+            <TextBlock x:Name="TextBlockSettings08" RelativePanel.Below="TextBlockSettings07" Margin="20,3,0,0" Text="(например, Tahoma или TimesNewRoman)"   FontSize="11" />
+            <TextBox x:Name="TextBoxModelCenaShrift" RelativePanel.Below="TextBlockSettings08" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings007" RelativePanel.Below="TextBoxModelCenaShrift" Margin="20,20,0,0" Text="Стили для кнопки перехода на страницу товара (style=&quot; &quot;) :"   />
+            <TextBlock x:Name="TextBlockSettings008" RelativePanel.Below="TextBlockSettings007" Margin="20,3,0,0" Text="(например, background:white;)"   FontSize="11" />
+            <TextBox x:Name="TextBoxSTYLEButton" RelativePanel.Below="TextBlockSettings008" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings9" RelativePanel.Below="TextBoxSTYLEButton" Margin="20,20,0,0" Text="На Главной размещаются либо 4 товара (одна строка), либо 8 товаров (две строки)." Width="350" TextWrapping="WrapWholeWords" FontSize="12" FontWeight="Bold" />
+            <TextBlock x:Name="Row1" Text="РЯД 1" RelativePanel.Below="TextBlockSettings9" Margin="20,20,0,0" />
+
+            <TextBlock x:Name="TextBlockTovar1Text1" RelativePanel.Below="Row1" Margin="20,30,0,0" Text="Товар №1"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar1" RelativePanel.Below="TextBlockTovar1Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar1_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar1Text2" RelativePanel.Below="ButtonAddTovar1" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar1Text3" RelativePanel.Below="TextBlockTovar1Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovara1" RelativePanel.Below="TextBlockTovar1Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar1Text4" RelativePanel.Below="TextBoxNaimenovanieTovara1" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar1Text5" RelativePanel.Below="TextBlockTovar1Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovara1" RelativePanel.Below="TextBlockTovar1Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar1Text6" RelativePanel.Below="TextBoxImageTovara1" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar1Text7" RelativePanel.Below="TextBlockTovar1Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeli1" RelativePanel.Below="TextBlockTovar1Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar1Text8" RelativePanel.Below="TextBoxNaimenovanieModeli1" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar1Text9" RelativePanel.Below="TextBlockTovar1Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeli1" RelativePanel.Below="TextBlockTovar1Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar1Text10" RelativePanel.Below="TextBoxOpisanieModeli1" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeli1" RelativePanel.Below="TextBlockTovar1Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar1RUB" RelativePanel.Below="TextBoxCenaModeli1" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar1" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar1DOLLAR" RelativePanel.Below="radioButtonTovar1RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar1"/>
+            <RadioButton x:Name="radioButtonTovar1EURO" RelativePanel.Below="radioButtonTovar1DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar1"/>
+            <TextBlock x:Name="TextBlockTovar1Text11" RelativePanel.Below="radioButtonTovar1EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar1Text12" RelativePanel.Below="TextBlockTovar1Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar1Text13" RelativePanel.Below="TextBlockTovar1Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar1Text14" RelativePanel.Below="TextBlockTovar1Text13" Text="(например, /shop/tovar1.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar1" RelativePanel.Below="TextBlockTovar1Text14" Margin="20,3,0,0" Width="300" />
+            
+            
+            <TextBlock x:Name="TextBlockTovar2Text1" RelativePanel.Below="TextBoxLinkTovar1" Margin="20,30,0,0" Text="Товар №2"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar2" RelativePanel.Below="TextBlockTovar2Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar2_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar2Text2" RelativePanel.Below="ButtonAddTovar2" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar2Text3" RelativePanel.Below="TextBlockTovar2Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar2" RelativePanel.Below="TextBlockTovar2Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar2Text4" RelativePanel.Below="TextBoxNaimenovanieTovar2" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar2Text5" RelativePanel.Below="TextBlockTovar2Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar2" RelativePanel.Below="TextBlockTovar2Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar2Text6" RelativePanel.Below="TextBoxImageTovar2" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar2Text7" RelativePanel.Below="TextBlockTovar2Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar2" RelativePanel.Below="TextBlockTovar2Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar2Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar2" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar2Text9" RelativePanel.Below="TextBlockTovar2Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar2" RelativePanel.Below="TextBlockTovar2Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar2Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar2" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar2" RelativePanel.Below="TextBlockTovar2Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar2RUB" RelativePanel.Below="TextBoxCenaModeliTovar2" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar2" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar2DOLLAR" RelativePanel.Below="radioButtonTovar2RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar2"/>
+            <RadioButton x:Name="radioButtonTovar2EURO" RelativePanel.Below="radioButtonTovar2DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar2"/>
+            <TextBlock x:Name="TextBlockTovar2Text11" RelativePanel.Below="radioButtonTovar2EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar2Text12" RelativePanel.Below="TextBlockTovar2Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar2Text13" RelativePanel.Below="TextBlockTovar2Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar2Text14" RelativePanel.Below="TextBlockTovar2Text13" Text="(например, /shop/Tovar2.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar2" RelativePanel.Below="TextBlockTovar2Text14" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockTovar3Text1" RelativePanel.Below="TextBoxLinkTovar2" Margin="20,30,0,0" Text="Товар №3"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar3" RelativePanel.Below="TextBlockTovar3Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar3_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar3Text2" RelativePanel.Below="ButtonAddTovar3" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar3Text3" RelativePanel.Below="TextBlockTovar3Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar3" RelativePanel.Below="TextBlockTovar3Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar3Text4" RelativePanel.Below="TextBoxNaimenovanieTovar3" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar3Text5" RelativePanel.Below="TextBlockTovar3Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar3" RelativePanel.Below="TextBlockTovar3Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar3Text6" RelativePanel.Below="TextBoxImageTovar3" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar3Text7" RelativePanel.Below="TextBlockTovar3Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar3" RelativePanel.Below="TextBlockTovar3Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar3Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar3" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar3Text9" RelativePanel.Below="TextBlockTovar3Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar3" RelativePanel.Below="TextBlockTovar3Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar3Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar3" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar3" RelativePanel.Below="TextBlockTovar3Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar3RUB" RelativePanel.Below="TextBoxCenaModeliTovar3" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar3" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar3DOLLAR" RelativePanel.Below="radioButtonTovar3RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar3"/>
+            <RadioButton x:Name="radioButtonTovar3EURO" RelativePanel.Below="radioButtonTovar3DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar3"/>
+            <TextBlock x:Name="TextBlockTovar3Text11" RelativePanel.Below="radioButtonTovar3EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar3Text12" RelativePanel.Below="TextBlockTovar3Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar3Text13" RelativePanel.Below="TextBlockTovar3Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar3Text14" RelativePanel.Below="TextBlockTovar3Text13" Text="(например, /shop/Tovar3.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar3" RelativePanel.Below="TextBlockTovar3Text14" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockTovar4Text1" RelativePanel.Below="TextBoxLinkTovar3" Margin="20,30,0,0" Text="Товар №4"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar4" RelativePanel.Below="TextBlockTovar4Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar4_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar4Text2" RelativePanel.Below="ButtonAddTovar4" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar4Text3" RelativePanel.Below="TextBlockTovar4Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar4" RelativePanel.Below="TextBlockTovar4Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar4Text4" RelativePanel.Below="TextBoxNaimenovanieTovar4" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar4Text5" RelativePanel.Below="TextBlockTovar4Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar4" RelativePanel.Below="TextBlockTovar4Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar4Text6" RelativePanel.Below="TextBoxImageTovar4" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar4Text7" RelativePanel.Below="TextBlockTovar4Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar4" RelativePanel.Below="TextBlockTovar4Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar4Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar4" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar4Text9" RelativePanel.Below="TextBlockTovar4Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar4" RelativePanel.Below="TextBlockTovar4Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar4Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar4" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar4" RelativePanel.Below="TextBlockTovar4Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar4RUB" RelativePanel.Below="TextBoxCenaModeliTovar4" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar4" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar4DOLLAR" RelativePanel.Below="radioButtonTovar4RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar4"/>
+            <RadioButton x:Name="radioButtonTovar4EURO" RelativePanel.Below="radioButtonTovar4DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar4"/>
+            <TextBlock x:Name="TextBlockTovar4Text11" RelativePanel.Below="radioButtonTovar4EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar4Text12" RelativePanel.Below="TextBlockTovar4Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar4Text13" RelativePanel.Below="TextBlockTovar4Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar4Text14" RelativePanel.Below="TextBlockTovar4Text13" Text="(например, /shop/Tovar4.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar4" RelativePanel.Below="TextBlockTovar4Text14" Margin="20,3,0,0" Width="300" />
+            
+            <Rectangle x:Name="Razdelitel" RelativePanel.Below="TextBoxLinkTovar4" Fill="#FFF4F4F5" Height="1.7"  Width="1000" Margin="20,20,0,0"/>
+            <TextBlock x:Name="Row2" Text="РЯД 2" RelativePanel.Below="Razdelitel" Margin="20,20,0,0" />
+
+            <TextBlock x:Name="TextBlockTovar5Text1" RelativePanel.Below="Row2" Margin="20,30,0,0" Text="Товар №5"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar5" RelativePanel.Below="TextBlockTovar5Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar5_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar5Text2" RelativePanel.Below="ButtonAddTovar5" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar5Text3" RelativePanel.Below="TextBlockTovar5Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar5" RelativePanel.Below="TextBlockTovar5Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar5Text4" RelativePanel.Below="TextBoxNaimenovanieTovar5" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar5Text5" RelativePanel.Below="TextBlockTovar5Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar5" RelativePanel.Below="TextBlockTovar5Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar5Text6" RelativePanel.Below="TextBoxImageTovar5" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar5Text7" RelativePanel.Below="TextBlockTovar5Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar5" RelativePanel.Below="TextBlockTovar5Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar5Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar5" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar5Text9" RelativePanel.Below="TextBlockTovar5Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar5" RelativePanel.Below="TextBlockTovar5Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar5Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar5" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar5" RelativePanel.Below="TextBlockTovar5Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar5RUB" RelativePanel.Below="TextBoxCenaModeliTovar5" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar5" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar5DOLLAR" RelativePanel.Below="radioButtonTovar5RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar5"/>
+            <RadioButton x:Name="radioButtonTovar5EURO" RelativePanel.Below="radioButtonTovar5DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar5"/>
+            <TextBlock x:Name="TextBlockTovar5Text11" RelativePanel.Below="radioButtonTovar5EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar5Text12" RelativePanel.Below="TextBlockTovar5Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar5Text13" RelativePanel.Below="TextBlockTovar5Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar5Text14" RelativePanel.Below="TextBlockTovar5Text13" Text="(например, /shop/Tovar5.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar5" RelativePanel.Below="TextBlockTovar5Text14" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockTovar6Text1" RelativePanel.Below="TextBoxLinkTovar5" Margin="20,30,0,0" Text="Товар №6"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar6" RelativePanel.Below="TextBlockTovar6Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar6_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar6Text2" RelativePanel.Below="ButtonAddTovar6" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar6Text3" RelativePanel.Below="TextBlockTovar6Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar6" RelativePanel.Below="TextBlockTovar6Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar6Text4" RelativePanel.Below="TextBoxNaimenovanieTovar6" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar6Text5" RelativePanel.Below="TextBlockTovar6Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar6" RelativePanel.Below="TextBlockTovar6Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar6Text6" RelativePanel.Below="TextBoxImageTovar6" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar6Text7" RelativePanel.Below="TextBlockTovar6Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar6" RelativePanel.Below="TextBlockTovar6Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar6Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar6" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar6Text9" RelativePanel.Below="TextBlockTovar6Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar6" RelativePanel.Below="TextBlockTovar6Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar6Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar6" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar6" RelativePanel.Below="TextBlockTovar6Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar6RUB" RelativePanel.Below="TextBoxCenaModeliTovar6" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar6" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar6DOLLAR" RelativePanel.Below="radioButtonTovar6RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar6"/>
+            <RadioButton x:Name="radioButtonTovar6EURO" RelativePanel.Below="radioButtonTovar6DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar6"/>
+            <TextBlock x:Name="TextBlockTovar6Text11" RelativePanel.Below="radioButtonTovar6EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar6Text12" RelativePanel.Below="TextBlockTovar6Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar6Text13" RelativePanel.Below="TextBlockTovar6Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar6Text14" RelativePanel.Below="TextBlockTovar6Text13" Text="(например, /shop/Tovar6.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar6" RelativePanel.Below="TextBlockTovar6Text14" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockTovar7Text1" RelativePanel.Below="TextBoxLinkTovar6" Margin="20,30,0,0" Text="Товар №7"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar7" RelativePanel.Below="TextBlockTovar7Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar7_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar7Text2" RelativePanel.Below="ButtonAddTovar7" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar7Text3" RelativePanel.Below="TextBlockTovar7Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar7" RelativePanel.Below="TextBlockTovar7Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar7Text4" RelativePanel.Below="TextBoxNaimenovanieTovar7" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar7Text5" RelativePanel.Below="TextBlockTovar7Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar7" RelativePanel.Below="TextBlockTovar7Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar7Text6" RelativePanel.Below="TextBoxImageTovar7" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar7Text7" RelativePanel.Below="TextBlockTovar7Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar7" RelativePanel.Below="TextBlockTovar7Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar7Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar7" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar7Text9" RelativePanel.Below="TextBlockTovar7Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar7" RelativePanel.Below="TextBlockTovar7Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar7Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar7" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar7" RelativePanel.Below="TextBlockTovar7Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar7RUB" RelativePanel.Below="TextBoxCenaModeliTovar7" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar7" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar7DOLLAR" RelativePanel.Below="radioButtonTovar7RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar7"/>
+            <RadioButton x:Name="radioButtonTovar7EURO" RelativePanel.Below="radioButtonTovar7DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar7"/>
+            <TextBlock x:Name="TextBlockTovar7Text11" RelativePanel.Below="radioButtonTovar7EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar7Text12" RelativePanel.Below="TextBlockTovar7Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar7Text13" RelativePanel.Below="TextBlockTovar7Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar7Text14" RelativePanel.Below="TextBlockTovar7Text13" Text="(например, /shop/Tovar7.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar7" RelativePanel.Below="TextBlockTovar7Text14" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockTovar8Text1" RelativePanel.Below="TextBoxLinkTovar7" Margin="20,30,0,0" Text="Товар №8"   FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="ButtonAddTovar8" RelativePanel.Below="TextBlockTovar8Text1" Content="Добавить существующий товар >" Click="ButtonAddTovar8_Click" Margin="20,10,0,0" />
+            <TextBlock x:Name="TextBlockTovar8Text2" RelativePanel.Below="ButtonAddTovar8" Margin="20,20,0,0" Text="Название:"  />
+            <TextBlock x:Name="TextBlockTovar8Text3" RelativePanel.Below="TextBlockTovar8Text2" Margin="20,3,0,0" Text="(например, Насос Grundfos 1,5кВт)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieTovar8" RelativePanel.Below="TextBlockTovar8Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar8Text4" RelativePanel.Below="TextBoxNaimenovanieTovar8" Margin="20,20,0,0" Text="Ссылка на фото:"  />
+            <TextBlock x:Name="TextBlockTovar8Text5" RelativePanel.Below="TextBlockTovar8Text4" Margin="20,3,0,0" Text="(например, /images/1.jpg)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxImageTovar8" RelativePanel.Below="TextBlockTovar8Text5" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar8Text6" RelativePanel.Below="TextBoxImageTovar8" Margin="20,15,0,0" Text="Наименование модели:"   />
+            <TextBlock x:Name="TextBlockTovar8Text7" RelativePanel.Below="TextBlockTovar8Text6" Margin="20,3,0,0" Text="(например, Z88TGS-LZD-1)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxNaimenovanieModeliTovar8" RelativePanel.Below="TextBlockTovar8Text7" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar8Text8" RelativePanel.Below="TextBoxNaimenovanieModeliTovar8" Margin="20,15,0,0" Text="Краткое описание:"   />
+            <TextBlock x:Name="TextBlockTovar8Text9" RelativePanel.Below="TextBlockTovar8Text8" Margin="20,3,0,0" Text="(например, для ванной комнаты площадью 5м2)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxOpisanieModeliTovar8" RelativePanel.Below="TextBlockTovar8Text9" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockTovar8Text10" RelativePanel.Below="TextBoxOpisanieModeliTovar8" Margin="20,15,0,0" Text="Цена (цифрами):"   />
+            <TextBox x:Name="TextBoxCenaModeliTovar8" RelativePanel.Below="TextBlockTovar8Text10" Margin="20,8,0,0" Width="300" />
+            <RadioButton x:Name="radioButtonTovar8RUB" RelativePanel.Below="TextBoxCenaModeliTovar8" Margin="20,2,0,0" Content="Рублей"   FontSize="12" Width="70" GroupName="CenaTovar8" IsChecked="True"/>
+            <RadioButton x:Name="radioButtonTovar8DOLLAR" RelativePanel.Below="radioButtonTovar8RUB" Content="Долларов США"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar8"/>
+            <RadioButton x:Name="radioButtonTovar8EURO" RelativePanel.Below="radioButtonTovar8DOLLAR" Content="ЕВРО"   FontSize="12" Margin="20,0,0,0" GroupName="CenaTovar8"/>
+            <TextBlock x:Name="TextBlockTovar8Text11" RelativePanel.Below="radioButtonTovar8EURO" Text="В случае выбора доллара или евро цена на сайте будет отображена в рублях по курсу ЦБ РФ." Margin="20,0,0,0"   FontSize="11" Foreground="Green" />
+            <TextBlock x:Name="TextBlockTovar8Text12" RelativePanel.Below="TextBlockTovar8Text11" Text="Добавьте в планировщик CRON скрипт cbr.php для ежедневного автоматического обновления курса валют с сайта ЦБ РФ." Margin="20,0,0,0"   FontSize="11"/>
+            <TextBlock x:Name="TextBlockTovar8Text13" RelativePanel.Below="TextBlockTovar8Text12" Text="Ссылка на страницу товара:" Margin="20,20,0,0"   />
+            <TextBlock x:Name="TextBlockTovar8Text14" RelativePanel.Below="TextBlockTovar8Text13" Text="(например, /shop/Tovar8.php)" Margin="20,3,0,0"   FontSize="11"/>
+            <TextBox x:Name="TextBoxLinkTovar8" RelativePanel.Below="TextBlockTovar8Text14" Margin="20,3,0,0" Width="300" />
+
+            <Button Visibility="Collapsed" x:Name="SaveFileIndexTovari" Content="сохранить файл данных модуля &quot;Товары на главной&quot; (.indextovar)" RelativePanel.Below="TextBoxLinkTovar8" Margin="20,40,0,0" Background="#992B65E2" Click="SaveFileIndexTovari_Click"/>
+            <Button Visibility="Collapsed" x:Name="SaveFileIndexTovariTPL" Content="Экспорт файла данных модуля &quot;Товары на главной&quot; для публикации на сайт (tovari_index.tpl)" RelativePanel.Below="SaveFileIndexTovari" Margin="20,20,0,0" Background="LawnGreen" Click="SaveFileIndexTovariTPL_Click"/>
+
+
+            <TextBlock x:Name="TextBlockFtp" Text="Данные для выгрузки файла на FTP"   FontSize="14" FontWeight="Bold" RelativePanel.Below="SaveFileIndexTovariTPL" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer" Text="FTP адрес файла на сервере:"   RelativePanel.Below="TextBlockFtp" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer1" Text="(например, ftp://www.123.com/public_html/tovari_index.tpl)"   FontSize="11" RelativePanel.Below="TextBlockFtpServer" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPServer" Width="300" RelativePanel.Below="TextBlockFtpServer1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpUser" Text="Имя пользователя:"   RelativePanel.Below="TextBoxFTPServer" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpUser1" Text="(например, Anonumous)"   FontSize="11" RelativePanel.Below="TextBlockFtpUser" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPUser" Width="300" RelativePanel.Below="TextBlockFtpUser1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpPass" Text="Пароль:"   RelativePanel.Below="TextBoxFTPUser" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpPass1" Text="(введите пароль от FTP)"   FontSize="11" RelativePanel.Below="TextBlockFtpPass" Margin="20,3,0,0" />
+            <PasswordBox x:Name="TextBoxFTPPass" Width="300" RelativePanel.Below="TextBlockFtpPass1" Margin="20,3,0,0"/>
+            <TextBlock x:Name="WarningFTP" Text="Перед отправкой файла по FTP обязательно выполните сохранение TPL-файла на вашем устройстве, иначе на FTP будет загружен пустой файл." FontWeight="Bold" Margin="20,20,0,0" RelativePanel.Below="TextBoxFTPPass" Foreground="#FFF31515" Visibility="Collapsed"/>
+
+
+            <Button Visibility="Collapsed" x:Name="FTPFileIndexTovariTPL" Content="Выгрузить на FTP готовый файл модуля &quot;Товары на главной&quot; (tovari_index.tpl)" RelativePanel.Below="WarningFTP" Margin="20,20,0,0" Background="LightBlue" Click="FTPFileIndexTovariTPL_Click"/>
+
+
+            <TextBlock x:Name="empty_footer" RelativePanel.Below="FTPFileIndexTovariTPL" Margin="20,20,0,0"/>
+            <ProgressRing x:Name="Progress" RelativePanel.Below="empty_footer" Margin="20,5,0,0" Foreground="Purple" Background="Transparent"/>
+            <TextBlock x:Name="StatusFile" RelativePanel.Below="Progress" Margin="20,5,0,0" Visibility="Collapsed"/>
+            <TextBlock x:Name="empty_footer2" RelativePanel.Below="StatusFile" Margin="20,20,0,0"/>
+
+            <TextBox x:Name="FileTextBox" Visibility="Collapsed" RelativePanel.Below="empty_footer2"/>
+
+
+
+
+
+        </RelativePanel>
+
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="400" />
+                        <Setter Target="MenuBar.IsOpen" Value="True" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="630" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="390" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="480" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="300" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="400" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+    </ScrollViewer>
+</Page>

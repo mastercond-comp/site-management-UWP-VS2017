@@ -1,0 +1,225 @@
+﻿<Page
+    x:Class="Управление.сайтом.RootNews"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="MenuBar" HorizontalAlignment="Center" IsSticky="True" CompositeMode="Inherit" Background="White">
+            <AppBarButton Icon="OpenLocal" Label="Загрузить *.indexnews" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="LoadFileIndexNews_Click"/>
+            <AppBarButton Icon="Upload" Label="Сохранить *.indexnews и выгрузить по FTP" FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Save" Label="Сохранить *.indexnews"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileIndexNews_Click"/>
+            <AppBarButton Icon="SaveLocal" Label="Сохранить news.tpl"   FontSize="35" Foreground="Purple" FontWeight="Bold" Background="White" Click="SaveFileIndexNewsTPL_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TextBlockH1" Text="МОДУЛЬ &quot;НОВОСТИ НА ГЛАВНОЙ&quot;"   FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+
+            <Image x:Name="OpisanieImageIMG" Source="ms-appx:///Assets/OURNEWSscreenshot.png" Width="630" RelativePanel.Below="TextBlockH1" Margin="20,30,0,0"/>
+            <TextBlock x:Name="ImageOpisanie" Text="(пример модуля &quot;НОВОСТИ НА ГЛАВНОЙ СТРАНИЦЕ САЙТА&quot;)" Margin="20,5,0,0" RelativePanel.Below="OpisanieImageIMG" FontSize="12" />
+            <TextBlock x:Name="AddModulPHP" Text="Для добавления модуля в произвольную страницу добавьте &lt;?php require('news.tpl'); ?&gt;" Margin="20,20,0,0" RelativePanel.Below="ImageOpisanie" FontSize="14" FontWeight="Medium"/>
+
+            <Rectangle x:Name="RazdelitelImage1" RelativePanel.Below="AddModulPHP" Fill="#FFF4F4F5" Height="0.7" Width="1000" Margin="20,20,0,0"/>
+
+
+
+            <Button Visibility="Collapsed" x:Name="LoadFileIndexNews" Content="Загрузить файл данных модуля &quot;НОВОСТИ НА ГЛАВНОЙ СТРАНИЦЕ&quot;(.indexnews)" RelativePanel.Below="RazdelitelImage1" Margin="20,35,0,0" Background="#992B65E2" Click="LoadFileIndexNews_Click" Foreground="White"/>
+
+            <TextBlock x:Name="TextBlockSettings1" RelativePanel.Below="LoadFileIndexNews" Margin="20,20,0,0" Text="Цвет текста заголовка &quot;НАШИ НОВОСТИ&quot;:"   />
+            <TextBlock x:Name="TextBlockSettings2" RelativePanel.Below="TextBlockSettings1" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxZagolovokColor" RelativePanel.Below="TextBlockSettings2" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings3" RelativePanel.Below="TextBoxZagolovokColor" Margin="20,20,0,0" Text="Цвет даты новостей:"   />
+            <TextBlock x:Name="TextBlockSettings4" RelativePanel.Below="TextBlockSettings3" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxDataTextColor" RelativePanel.Below="TextBlockSettings4" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings5" RelativePanel.Below="TextBoxDataTextColor" Margin="20,20,0,0" Text="Цвет текста новостей:"   />
+            <TextBlock x:Name="TextBlockSettings6" RelativePanel.Below="TextBlockSettings5" Margin="20,3,0,0" Text="(например, green, или цветовой код)"   FontSize="11" />
+            <TextBox x:Name="TextBoxNewsTextColor" RelativePanel.Below="TextBlockSettings6" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings7" RelativePanel.Below="TextBoxNewsTextColor" Margin="20,20,0,0" Text="Шрифт даты новости:"   />
+            <TextBlock x:Name="TextBlockSettings8" RelativePanel.Below="TextBlockSettings7" Margin="20,3,0,0" Text="(например, Tahoma или TimesNewRoman)"   FontSize="11" />
+            <TextBox x:Name="TextBoxDataShrift" RelativePanel.Below="TextBlockSettings8" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockSettings9" RelativePanel.Below="TextBoxDataShrift" Margin="20,20,0,0" Text="Шрифт текста новости:"   />
+            <TextBlock x:Name="TextBlockSettings10" RelativePanel.Below="TextBlockSettings9" Margin="20,3,0,0" Text="(например, Tahoma или TimesNewRoman)"   FontSize="11" />
+            <TextBox x:Name="TextBoxNewsShrift" RelativePanel.Below="TextBlockSettings10" Margin="20,3,0,0" Width="300" />
+
+            <Rectangle x:Name="Razdelitel001" RelativePanel.Below="TextBoxNewsShrift" Fill="#FFF4F4F5" Height="0.5" Width="1000" Margin="20,10,0,0"/>
+
+            <StackPanel x:Name="StackPanelAddNews" Orientation="Vertical" Background="Purple" Margin="7,18,0,0" RelativePanel.Below="TextBoxNewsShrift" MinWidth="1000">
+                <TextBlock x:Name="TextBlockNews0Text1" Margin="20,30,0,0" Text="ДОБАВИТЬ НОВОСТЬ"  FontSize="14" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="TextBlockNews0Text2" Margin="20,20,0,0" Text="Дата новости:"  Foreground="White" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="TextBlockNews0Text3" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11" Foreground="White" HorizontalAlignment="Left"/>
+                <TextBox x:Name="TextBoxDataNovosti0"   Margin="20,3,0,0" Width="300" Foreground="Black" BorderBrush="White" Background="White" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="TextBlockNews0Text4" Margin="20,15,0,0" Text="Текст новости:"   Foreground="White" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="TextBlockNews0Text5" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11" Foreground="White" HorizontalAlignment="Left"/>
+                <TextBox x:Name="TextBoxTekstNovosti0"  Margin="20,3,0,0" Width="300" BorderBrush="White" Background="White" Foreground="Black" MaxHeight="300" HorizontalAlignment="Left"/>
+                <Button x:Name="ButtonAddNews" Content="Добавить новость >" Click="ButtonAddNews_Click" Background="White" Foreground="Purple" Margin="20,20,0,0" HorizontalAlignment="Left"/>
+                <TextBlock Margin="20,10,0,0" />
+            </StackPanel>
+
+            <Rectangle x:Name="Razdelitel01" RelativePanel.Below="StackPanelAddNews" Fill="#FFF4F4F5" Height="0.5" Width="1000" Margin="40,10,0,0"/>
+
+
+
+            <TextBlock x:Name="TextBlockNews1Text1" RelativePanel.Below="Razdelitel01" Margin="20,30,0,0" Text="Новость №1"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews1Text2" RelativePanel.Below="TextBlockNews1Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews1Text3" RelativePanel.Below="TextBlockNews1Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti1" RelativePanel.Below="TextBlockNews1Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews1Text4" RelativePanel.Below="TextBoxDataNovosti1" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews1Text5" RelativePanel.Below="TextBlockNews1Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti1" RelativePanel.Below="TextBlockNews1Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews2Text1" RelativePanel.Below="TextBoxTekstNovosti1" Margin="20,30,0,0" Text="Новость №2"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews2Text2" RelativePanel.Below="TextBlockNews2Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews2Text3" RelativePanel.Below="TextBlockNews2Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti2" RelativePanel.Below="TextBlockNews2Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews2Text4" RelativePanel.Below="TextBoxDataNovosti2" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews2Text5" RelativePanel.Below="TextBlockNews2Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti2" RelativePanel.Below="TextBlockNews2Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews3Text1" RelativePanel.Below="TextBoxTekstNovosti2" Margin="20,30,0,0" Text="Новость №3"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews3Text2" RelativePanel.Below="TextBlockNews3Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews3Text3" RelativePanel.Below="TextBlockNews3Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti3" RelativePanel.Below="TextBlockNews3Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews3Text4" RelativePanel.Below="TextBoxDataNovosti3" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews3Text5" RelativePanel.Below="TextBlockNews3Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti3" RelativePanel.Below="TextBlockNews3Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews4Text1" RelativePanel.Below="TextBoxTekstNovosti3" Margin="20,30,0,0" Text="Новость №4"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews4Text2" RelativePanel.Below="TextBlockNews4Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews4Text3" RelativePanel.Below="TextBlockNews4Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti4" RelativePanel.Below="TextBlockNews4Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews4Text4" RelativePanel.Below="TextBoxDataNovosti4" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews4Text5" RelativePanel.Below="TextBlockNews4Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti4" RelativePanel.Below="TextBlockNews4Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews5Text1" RelativePanel.Below="TextBoxTekstNovosti4" Margin="20,30,0,0" Text="Новость №5"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews5Text2" RelativePanel.Below="TextBlockNews5Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews5Text3" RelativePanel.Below="TextBlockNews5Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti5" RelativePanel.Below="TextBlockNews5Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews5Text4" RelativePanel.Below="TextBoxDataNovosti5" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews5Text5" RelativePanel.Below="TextBlockNews5Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti5" RelativePanel.Below="TextBlockNews5Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews6Text1" RelativePanel.Below="TextBoxTekstNovosti5" Margin="20,30,0,0" Text="Новость №6"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews6Text2" RelativePanel.Below="TextBlockNews6Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews6Text3" RelativePanel.Below="TextBlockNews6Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti6" RelativePanel.Below="TextBlockNews6Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews6Text4" RelativePanel.Below="TextBoxDataNovosti6" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews6Text5" RelativePanel.Below="TextBlockNews6Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti6" RelativePanel.Below="TextBlockNews6Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews7Text1" RelativePanel.Below="TextBoxTekstNovosti6" Margin="20,30,0,0" Text="Новость №7"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews7Text2" RelativePanel.Below="TextBlockNews7Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews7Text3" RelativePanel.Below="TextBlockNews7Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti7" RelativePanel.Below="TextBlockNews7Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews7Text4" RelativePanel.Below="TextBoxDataNovosti7" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews7Text5" RelativePanel.Below="TextBlockNews7Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti7" RelativePanel.Below="TextBlockNews7Text5" Margin="20,3,0,0" Width="300" />
+
+            <TextBlock x:Name="TextBlockNews8Text1" RelativePanel.Below="TextBoxTekstNovosti7" Margin="20,30,0,0" Text="Новость №8"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews8Text2" RelativePanel.Below="TextBlockNews8Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews8Text3" RelativePanel.Below="TextBlockNews8Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti8" RelativePanel.Below="TextBlockNews8Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews8Text4" RelativePanel.Below="TextBoxDataNovosti8" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews8Text5" RelativePanel.Below="TextBlockNews8Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti8" RelativePanel.Below="TextBlockNews8Text5" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockNews9Text1" RelativePanel.Below="TextBoxTekstNovosti8" Margin="20,30,0,0" Text="Новость №9"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews9Text2" RelativePanel.Below="TextBlockNews9Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews9Text3" RelativePanel.Below="TextBlockNews9Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti9" RelativePanel.Below="TextBlockNews9Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews9Text4" RelativePanel.Below="TextBoxDataNovosti9" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews9Text5" RelativePanel.Below="TextBlockNews9Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti9" RelativePanel.Below="TextBlockNews9Text5" Margin="20,3,0,0" Width="300" />
+
+
+            <TextBlock x:Name="TextBlockNews10Text1" RelativePanel.Below="TextBoxTekstNovosti9" Margin="20,30,0,0" Text="Новость №10"   FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="TextBlockNews10Text2" RelativePanel.Below="TextBlockNews10Text1" Margin="20,20,0,0" Text="Дата новости:"  />
+            <TextBlock x:Name="TextBlockNews10Text3" RelativePanel.Below="TextBlockNews10Text2" Margin="20,3,0,0" Text="(например, 26/11/2015)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxDataNovosti10" RelativePanel.Below="TextBlockNews10Text3" Margin="20,3,0,0" Width="300" />
+            <TextBlock x:Name="TextBlockNews10Text4" RelativePanel.Below="TextBoxDataNovosti10" Margin="20,15,0,0" Text="Текст новости:"   />
+            <TextBlock x:Name="TextBlockNews10Text5" RelativePanel.Below="TextBlockNews10Text4" Margin="20,3,0,0" Text="(при необходимости используйте html)"   FontSize="11"/>
+            <TextBox x:Name="TextBoxTekstNovosti10" RelativePanel.Below="TextBlockNews10Text5" Margin="20,3,0,0" Width="300" />
+
+
+
+            <Button Visibility="Collapsed" x:Name="SaveFileIndexNews" Content="сохранить файл данных модуля &quot;Новости на главной&quot; (.indexnews)" RelativePanel.Below="TextBoxTekstNovosti10" Margin="20,40,0,0" Background="#992B65E2" Click="SaveFileIndexNews_Click"  Foreground="White"/>
+            <Button Visibility="Collapsed" x:Name="SaveFileIndexNewsTPL" Content="Экспорт файла данных модуля &quot;Новости на главной&quot; для публикации на сайт (news.tpl)" RelativePanel.Below="SaveFileIndexNews" Margin="20,20,0,0" Background="LawnGreen" Click="SaveFileIndexNewsTPL_Click"/>
+
+
+            <TextBlock x:Name="TextBlockFtp" Text="Данные для выгрузки файла на FTP"   FontSize="14" FontWeight="Bold" RelativePanel.Below="SaveFileIndexNewsTPL" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer" Text="FTP адрес файла на сервере:"   RelativePanel.Below="TextBlockFtp" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpServer1" Text="(например, ftp://www.123.com/public_html/news.tpl)"   FontSize="11" RelativePanel.Below="TextBlockFtpServer" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPServer" Width="300" RelativePanel.Below="TextBlockFtpServer1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpUser" Text="Имя пользователя:"   RelativePanel.Below="TextBoxFTPServer" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpUser1" Text="(например, Anonumous)"   FontSize="11" RelativePanel.Below="TextBlockFtpUser" Margin="20,3,0,0" />
+            <TextBox x:Name="TextBoxFTPUser" Width="300" RelativePanel.Below="TextBlockFtpUser1" Margin="20,3,0,0"/>
+
+            <TextBlock x:Name="TextBlockFtpPass" Text="Пароль:"   RelativePanel.Below="TextBoxFTPUser" Margin="20,20,0,0" />
+            <TextBlock x:Name="TextBlockFtpPass1" Text="(введите пароль от FTP)"   FontSize="11" RelativePanel.Below="TextBlockFtpPass" Margin="20,3,0,0" />
+            <PasswordBox x:Name="TextBoxFTPPass" Width="300" RelativePanel.Below="TextBlockFtpPass1" Margin="20,3,0,0"/>
+            <TextBlock x:Name="WarningFTP" Text="Перед отправкой файла по FTP обязательно выполните сохранение TPL-файла на вашем устройстве, иначе на FTP будет загружен пустой файл." FontWeight="Bold" Margin="20,20,0,0" RelativePanel.Below="TextBoxFTPPass" Foreground="#FFF31515" Visibility="Collapsed"/>
+
+
+            <Button Visibility="Collapsed" x:Name="FTPFileIndexNewsTPL" Content="Выгрузить на FTP готовый файл модуля &quot;Новости на главной&quot; (news.tpl)" RelativePanel.Below="WarningFTP" Margin="20,20,0,0" Background="LightBlue" Click="FTPFileIndexNewsTPL_Click"/>
+
+
+            <TextBlock x:Name="empty_footer" RelativePanel.Below="FTPFileIndexNewsTPL" Margin="20,20,0,0"/>
+            <ProgressRing x:Name="Progress" RelativePanel.Below="empty_footer" Margin="20,5,0,0" Foreground="Purple" Background="Transparent"/>
+            <TextBlock x:Name="StatusFile" RelativePanel.Below="Progress" Margin="20,5,0,0" Visibility="Collapsed"/>
+            <TextBlock x:Name="empty_footer2" RelativePanel.Below="StatusFile" Margin="20,20,0,0"/>
+
+            <TextBox x:Name="FileTextBox" Visibility="Collapsed" RelativePanel.Below="empty_footer2"/>
+
+
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="400" />
+                        <Setter Target="MenuBar.IsOpen" Value="True" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="630" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="390" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="480" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MenuBar.Width" Value="300" />
+                        <Setter Target="MenuBar.IsOpen" Value="False" />
+                        <Setter Target="OpisanieImageIMG.Width" Value="400" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+    </ScrollViewer>
+</Page>

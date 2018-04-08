@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="Управление.сайтом.Spravka"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Управление.сайтом"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="White">
+
+
+        <RelativePanel ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TextBlockCreateDocuments5" Text="ВОЗМОЖНОСТИ ПРИЛОЖЕНИЯ УПРАВЛЕНИЕ.САЙТОМ"  FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,7,0,0" />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie5" Text="Приложение Управление.сайтом позволяет быстро создать свой бизнес-сайт с товарным каталогом на базе фреймворка Bootstrap. Документация по Bootstrap с примерами доступна по адресу: getbootstrap.com" TextWrapping="WrapWholeWords"  Margin="20,15,0,0" RelativePanel.Below="TextBlockCreateDocuments5"  />
+
+            <TextBlock x:Name="TextBlockCreateDocuments51" RelativePanel.Below="TextBlockCreateDocumentsOpisanie5" Text="У МЕНЯ ЕСТЬ PHP-ХОСТИНГ, С ЧЕГО МНЕ НАЧАТЬ "  FontSize="16" FontWeight="SemiBold" Foreground="Purple" Margin="20,35,0,0" />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie51" Text="1. Скачайте и распакуйте Bootstrap в public_html каталог вашего сайта с нашего ресурса: http://www.mastercond.ru/bootstrapdistr.zip (размер 215 кБ)." TextWrapping="WrapWholeWords"  Margin="20,15,0,0" RelativePanel.Below="TextBlockCreateDocuments51"  />
+            <Button x:Name="LinkDownloadDistr" Content="Скачать дистрибутив" RelativePanel.Below="TextBlockCreateDocumentsOpisanie51" Margin="20,10,0,0" Click="LinkDownloadDistr_Click"/>
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie52" Text="2. Создайте шапку и меню вашего сайта (файл navigation.tpl) в разделе &quot;Общие данные и навигация&quot; и выгрузите файл по FTP в public_html каталог вашего сайта." TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="LinkDownloadDistr"  />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie53" Text="3. Выберите отображаемые модули главной страницы в разделе &quot;Главная страница&quot; и выгрузите файл index.php по FTP в public_html каталог вашего сайта." TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie52"  />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie54" Text="4. Настройте выбранные модули в соответствующих разделах (&quot;Слайдер&quot;,&quot;Новости на главной&quot; и т.д.), выгрузите соответствующие TPL-файлы по FTP в public_html каталог вашего сайта." TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie53"  />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie55" Text="5. Создайте PHP-страницы с контентом в разделе &quot;Страница с контентом&quot;, выгрузите соответствующие PHP-файлы по FTP в public_html каталог вашего сайта." TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie54"  />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie56" Text="6. Создайте товарный каталог по модели &quot;Каталог товаров&quot; -> &quot;Перечень товаров&quot; -> &quot;Товар&quot;. В первую очередь рекомендуем создать товары в разделе &quot;Страница &quot;ТОВАР&quot;, после этого вы легко сможете добавлять созданные товары в страницы &quot;Перечень товаров&quot;" TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie55"  />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie57" Text="7. Внесите изменения в шапку и меню (navigation.tpl) в соответствие с созданными страницами в разделе &quot;Общие данные и навигация&quot; и выгрузите файл по FTP в public_html каталог вашего сайта." TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie56"  />
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie58" Text="8. ВНИМАНИЕ! Для нормальной работы созданного в приложении сайта обязательно сгенерируйте в программе файлы footer.tpl (раздел Модуль &quot;Футер&quot;) и footerscripts.tpl (раздел &quot;Скрипты в футере&quot;) и выгрузите их на сайт в public_html (туда же, где находится index.php). Без этих двух файлов сайт не будет работать корректно." TextWrapping="WrapWholeWords"  Margin="20,10,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie57"  FontWeight="SemiBold"/>
+
+            <TextBlock x:Name="TextBlockCreateDocumentsOpisanie5700" TextWrapping="WrapWholeWords"  Margin="20,20,0,0" RelativePanel.Below="TextBlockCreateDocumentsOpisanie58"  />
+
+
+            <TextBlock RelativePanel.Below="TextBlockCreateDocumentsOpisanie5" Margin="20,20,0,0" />
+
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TextBlockCreateDocumentsOpisanie5.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie51.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie52.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie53.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie54.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie55.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie56.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie57.Width" Value="700" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie58.Width" Value="700" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState2">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TextBlockCreateDocumentsOpisanie5.Width" Value="440" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie51.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie52.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie53.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie54.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie55.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie56.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie57.Width" Value="420" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie58.Width" Value="420" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TextBlockCreateDocuments5.Width" Value="300" />
+                        <Setter Target="TextBlockCreateDocuments5.TextWrapping" Value="WrapWholeWords" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie5.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie51.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie52.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie53.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie54.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie55.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie56.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie57.Width" Value="320" />
+                        <Setter Target="TextBlockCreateDocumentsOpisanie58.Width" Value="320" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </ScrollViewer>
+</Page>
